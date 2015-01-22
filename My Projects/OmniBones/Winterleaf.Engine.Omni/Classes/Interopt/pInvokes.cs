@@ -34,11 +34,11 @@ namespace WinterLeaf.Engine.Classes.Interopt
                 set { m_ts.SetVar(key, value); }
                 }
             }
-        private readonly muglobals _muglobals = new muglobals();
+        private static readonly muglobals _muglobals = new muglobals();
         /// <summary>
         /// used to set/get bool globals
         /// </summary>
-        public muglobals uGlobal
+        public static muglobals uGlobal
             {
             get { return _muglobals; }
             }
@@ -64,12 +64,12 @@ namespace WinterLeaf.Engine.Classes.Interopt
             return base.ToString();
             }
 
-        readonly mglobalsIsDefined _mglobalsIsDefined = new mglobalsIsDefined();
+        private readonly static mglobalsIsDefined _mglobalsIsDefined = new mglobalsIsDefined();
 
         /// <summary>
         /// Used to grab string globals
         /// </summary>
-        public mglobalsIsDefined isGlobal
+        public static mglobalsIsDefined isGlobal
             {
             get { return _mglobalsIsDefined; }
             }
@@ -89,11 +89,11 @@ namespace WinterLeaf.Engine.Classes.Interopt
                 set { m_ts.SetVar(key, value); }
                 }
             }
-        public readonly msglobals _msglobals = new msglobals();
+        private static readonly msglobals _msglobals = new msglobals();
         /// <summary>
         /// Used to grab string globals
         /// </summary>
-        public msglobals sGlobal
+        public static msglobals sGlobal
             {
             get { return _msglobals; }
             }
@@ -115,11 +115,11 @@ namespace WinterLeaf.Engine.Classes.Interopt
                 }
             }
 
-        private readonly miglobals _miglobals = new miglobals();
+        private static readonly miglobals _miglobals = new miglobals();
         /// <summary>
         /// used to set/get int globals
         /// </summary>
-        public miglobals iGlobal
+        public static miglobals iGlobal
             {
             get { return _miglobals; }
             }
@@ -139,11 +139,11 @@ namespace WinterLeaf.Engine.Classes.Interopt
                 set { m_ts.SetVar(key, value); }
                 }
             }
-        private readonly mbglobals _mbglobals = new mbglobals();
+        private static readonly mbglobals _mbglobals = new mbglobals();
         /// <summary>
         /// used to set/get bool globals
         /// </summary>
-        public mbglobals bGlobal
+        public static mbglobals bGlobal
             {
             get { return _mbglobals; }
             }
@@ -165,11 +165,11 @@ namespace WinterLeaf.Engine.Classes.Interopt
                 set { m_ts.SetVar(key, value); }
                 }
             }
-        private readonly mfglobals _mfglobals = new mfglobals();
+        private static readonly mfglobals _mfglobals = new mfglobals();
         /// <summary>
         /// used to set/get bool globals
         /// </summary>
-        public mfglobals fGlobal
+        public static mfglobals fGlobal
             {
             get { return _mfglobals; }
             }
@@ -191,11 +191,11 @@ namespace WinterLeaf.Engine.Classes.Interopt
                 set { m_ts.SetVar(key, value); }
                 }
             }
-        public readonly mdglobals _mdglobals = new mdglobals();
+        public static readonly mdglobals _mdglobals = new mdglobals();
         /// <summary>
         /// used to set/get bool globals
         /// </summary>
-        public mdglobals dGlobal
+        public static mdglobals dGlobal
             {
             get { return _mdglobals; }
             }
@@ -209,17 +209,17 @@ namespace WinterLeaf.Engine.Classes.Interopt
         /// <summary>
         /// A property exposing Custom dnTorque Console Functions.
         /// </summary>
-        private ConsoleObject _mConsoleobject;
+        private static ConsoleObject _mConsoleobject;
 
         /// <summary>
         /// A property exposing Custom Math console functions.
         /// </summary>
-        private tMath _mMathobject;
+        private static tMath _mMathobject;
 
         /// <summary>
         /// A property exposing Custom dnTorque Console Functions.
         /// </summary>
-        public ConsoleObject console
+        public static ConsoleObject console
             {
             get { return _mConsoleobject; }
             }
@@ -227,7 +227,7 @@ namespace WinterLeaf.Engine.Classes.Interopt
         /// <summary>
         /// A property exposing Custom Math console functions.
         /// </summary>
-        public tMath math
+        public static tMath math
             {
             get { return _mMathobject; }
             }
@@ -236,7 +236,7 @@ namespace WinterLeaf.Engine.Classes.Interopt
         /// <summary>
         /// A list of all the Connection Object ID's active in Torque at the moment of request.
         /// </summary>
-        public List<UInt32> ClientGroup
+        public static List<UInt32> ClientGroup
             {
             get
                 {
@@ -253,7 +253,7 @@ namespace WinterLeaf.Engine.Classes.Interopt
         /// The count of connection ID's
         /// </summary>
         /// <returns></returns>
-        public UInt32 ClientGroup__GetCount()
+        public static UInt32 ClientGroup__GetCount()
             {
             return m_ts.ClientGroupGetCount();
             }
@@ -263,7 +263,7 @@ namespace WinterLeaf.Engine.Classes.Interopt
         /// </summary>
         /// <param name="index"></param>
         /// <returns></returns>
-        public uint ClientGroup__GetItem(UInt32 index)
+        public static uint ClientGroup__GetItem(UInt32 index)
             {
             return m_ts.ClientGroupGetObject(index);
             }
@@ -272,7 +272,7 @@ namespace WinterLeaf.Engine.Classes.Interopt
         /// Removes the tagged string from Torque.
         /// </summary>
         /// <param name="tag"></param>
-        public void removeTaggedString(string tag)
+        public static void removeTaggedString(string tag)
             {
             m_ts._removeTaggedString(tag);
             }
@@ -282,9 +282,6 @@ namespace WinterLeaf.Engine.Classes.Interopt
         /// </summary>
         public class ConsoleObject
             {
-            private Omni m_ts;
-
-          
             /// <summary>
             /// 
             /// </summary>
@@ -472,16 +469,6 @@ namespace WinterLeaf.Engine.Classes.Interopt
             public string Call(string simobject, string function)
                 {
                 return m_ts.SimObjectCall(simobject, function, new string[] { });
-                }
-
-
-            /// <summary>
-            /// Constructor.
-            /// </summary>
-            /// <param name="ts"></param>
-            public ConsoleObject(ref Omni ts)
-                {
-                m_ts = ts;
                 }
 
             /// <summary>
@@ -1202,18 +1189,6 @@ namespace WinterLeaf.Engine.Classes.Interopt
             /// <summary>
             /// 
             /// </summary>
-            private Omni m_ts;
-            /// <summary>
-            /// 
-            /// </summary>
-            /// <param name="ts"></param>
-            public tMath(ref Omni ts)
-                {
-                m_ts = ts;
-                }
-            /// <summary>
-            /// 
-            /// </summary>
             public static double M_2PI_F
                 {
                 get { return 3.1415926535897932384626433f * 2.0f; }
@@ -1278,1232 +1253,1226 @@ namespace WinterLeaf.Engine.Classes.Interopt
 		public void SetUp(ref Omni c)
             {
             m_ts = c;
-            _mConsoleobject = new ConsoleObject(ref c);
-            _mMathobject = new tMath(ref c);
-            	_mUtil = new UtilObject(ref c);
-	_mAIClient = new AIClientObject(ref c);
-	_mAIConnection = new AIConnectionObject(ref c);
-	_mAIPlayer = new AIPlayerObject(ref c);
-	_mCompoundUndoAction = new CompoundUndoActionObject(ref c);
-	_mConsoleLogger = new ConsoleLoggerObject(ref c);
-	_mCreatorTree = new CreatorTreeObject(ref c);
-	_mDbgFileView = new DbgFileViewObject(ref c);
-	_mEditManager = new EditManagerObject(ref c);
-	_mEventManager = new EventManagerObject(ref c);
-	_mFieldBrushObject = new FieldBrushObjectObject(ref c);
-	_mFileObject = new FileObjectObject(ref c);
-	_mForest = new ForestObject(ref c);
-	_mForestBrush = new ForestBrushObject(ref c);
-	_mForestBrushTool = new ForestBrushToolObject(ref c);
-	_mForestEditorCtrl = new ForestEditorCtrlObject(ref c);
-	_mForestSelectionTool = new ForestSelectionToolObject(ref c);
-	_mGuiBitmapCtrl = new GuiBitmapCtrlObject(ref c);
-	_mGuiCanvas = new GuiCanvasObject(ref c);
-	_mGuiColorPickerCtrl = new GuiColorPickerCtrlObject(ref c);
-	_mGuiControl = new GuiControlObject(ref c);
-	_mGuiControlProfile = new GuiControlProfileObject(ref c);
-	_mGuiConvexEditorCtrl = new GuiConvexEditorCtrlObject(ref c);
-	_mGuiDecalEditorCtrl = new GuiDecalEditorCtrlObject(ref c);
-	_mGuiEditCtrl = new GuiEditCtrlObject(ref c);
-	_mGuiFileTreeCtrl = new GuiFileTreeCtrlObject(ref c);
-	_mGuiFilterCtrl = new GuiFilterCtrlObject(ref c);
-	_mGuiGradientCtrl = new GuiGradientCtrlObject(ref c);
-	_mGuiIdleCamFadeBitmapCtrl = new GuiIdleCamFadeBitmapCtrlObject(ref c);
-	_mGuiInspector = new GuiInspectorObject(ref c);
-	_mGuiInspectorDynamicField = new GuiInspectorDynamicFieldObject(ref c);
-	_mGuiInspectorDynamicGroup = new GuiInspectorDynamicGroupObject(ref c);
-	_mGuiInspectorField = new GuiInspectorFieldObject(ref c);
-	_mGuiMaterialCtrl = new GuiMaterialCtrlObject(ref c);
-	_mGuiMeshRoadEditorCtrl = new GuiMeshRoadEditorCtrlObject(ref c);
-	_mGuiMissionAreaEditorCtrl = new GuiMissionAreaEditorCtrlObject(ref c);
-	_mGuiNavEditorCtrl = new GuiNavEditorCtrlObject(ref c);
-	_mGuiParticleGraphCtrl = new GuiParticleGraphCtrlObject(ref c);
-	_mGuiPopUpMenuCtrl = new GuiPopUpMenuCtrlObject(ref c);
-	_mGuiPopUpMenuCtrlEx = new GuiPopUpMenuCtrlExObject(ref c);
-	_mGuiRiverEditorCtrl = new GuiRiverEditorCtrlObject(ref c);
-	_mGuiRoadEditorCtrl = new GuiRoadEditorCtrlObject(ref c);
-	_mGuiTerrPreviewCtrl = new GuiTerrPreviewCtrlObject(ref c);
-	_mGuiTextEditCtrl = new GuiTextEditCtrlObject(ref c);
-	_mGuiTickCtrl = new GuiTickCtrlObject(ref c);
-	_mGuiToolboxButtonCtrl = new GuiToolboxButtonCtrlObject(ref c);
-	_mGuiTreeViewCtrl = new GuiTreeViewCtrlObject(ref c);
-	_mGuiVariableInspector = new GuiVariableInspectorObject(ref c);
-	_mLangTable = new LangTableObject(ref c);
-	_mLightBase = new LightBaseObject(ref c);
-	_mMaterial = new MaterialObject(ref c);
-	_mMECreateUndoAction = new MECreateUndoActionObject(ref c);
-	_mMEDeleteUndoAction = new MEDeleteUndoActionObject(ref c);
-	_mMenuBar = new MenuBarObject(ref c);
-	_mMessage = new MessageObject(ref c);
-	_mMessageVector = new MessageVectorObject(ref c);
-	_mPersistenceManager = new PersistenceManagerObject(ref c);
-	_mPhysicsDebrisData = new PhysicsDebrisDataObject(ref c);
-	_mPopupMenu = new PopupMenuObject(ref c);
-	_mReadXML = new ReadXMLObject(ref c);
-	_mSettings = new SettingsObject(ref c);
-	_mSFXSource = new SFXSourceObject(ref c);
-	_mSimComponent = new SimComponentObject(ref c);
-	_mSimDataBlock = new SimDataBlockObject(ref c);
-	_mSimObject = new SimObjectObject(ref c);
-	_mSimPersistSet = new SimPersistSetObject(ref c);
-	_mSimResponseCurve = new SimResponseCurveObject(ref c);
-	_mSimSet = new SimSetObject(ref c);
-	_mSimXMLDocument = new SimXMLDocumentObject(ref c);
-	_mSkyBox = new SkyBoxObject(ref c);
-	_mSpawnSphere = new SpawnSphereObject(ref c);
-	_mStaticShape = new StaticShapeObject(ref c);
-	_mSun = new SunObject(ref c);
-	_mTerrainBlock = new TerrainBlockObject(ref c);
-	_mTerrainEditor = new TerrainEditorObject(ref c);
-	_mTerrainSmoothAction = new TerrainSmoothActionObject(ref c);
-	_mTerrainSolderEdgesAction = new TerrainSolderEdgesActionObject(ref c);
-	_mTheoraTextureObject = new TheoraTextureObjectObject(ref c);
-	_mUndoAction = new UndoActionObject(ref c);
-	_mUndoManager = new UndoManagerObject(ref c);
-	_mWorldEditor = new WorldEditorObject(ref c);
-	_mActionMap = new ActionMapObject(ref c);
-	_mAITurretShape = new AITurretShapeObject(ref c);
-	_mArrayObject = new ArrayObjectObject(ref c);
-	_mCamera = new CameraObject(ref c);
-	_mCoverPoint = new CoverPointObject(ref c);
-	_mCubemapData = new CubemapDataObject(ref c);
-	_mDebris = new DebrisObject(ref c);
-	_mDebugDrawer = new DebugDrawerObject(ref c);
-	_mDecalData = new DecalDataObject(ref c);
-	_mDecalRoad = new DecalRoadObject(ref c);
-	_mDynamicConsoleMethodComponent = new DynamicConsoleMethodComponentObject(ref c);
-	_mEditTSCtrl = new EditTSCtrlObject(ref c);
-	_mFileDialog = new FileDialogObject(ref c);
-	_mFileStreamObject = new FileStreamObjectObject(ref c);
-	_mFlyingVehicle = new FlyingVehicleObject(ref c);
-	_mForestWindEmitter = new ForestWindEmitterObject(ref c);
-	_mGameBase = new GameBaseObject(ref c);
-	_mGameConnection = new GameConnectionObject(ref c);
-	_mGroundPlane = new GroundPlaneObject(ref c);
-	_mGuiAutoCompleteCtrl = new GuiAutoCompleteCtrlObject(ref c);
-	_mGuiAutoScrollCtrl = new GuiAutoScrollCtrlObject(ref c);
-	_mGuiBitmapButtonCtrl = new GuiBitmapButtonCtrlObject(ref c);
-	_mGuiButtonBaseCtrl = new GuiButtonBaseCtrlObject(ref c);
-	_mGuiCheckBoxCtrl = new GuiCheckBoxCtrlObject(ref c);
-	_mGuiChunkedBitmapCtrl = new GuiChunkedBitmapCtrlObject(ref c);
-	_mGuiClockHud = new GuiClockHudObject(ref c);
-	_mGuiDirectoryFileListCtrl = new GuiDirectoryFileListCtrlObject(ref c);
-	_mGuiDragAndDropControl = new GuiDragAndDropControlObject(ref c);
-	_mGuiDynamicCtrlArrayControl = new GuiDynamicCtrlArrayControlObject(ref c);
-	_mGuiFormCtrl = new GuiFormCtrlObject(ref c);
-	_mGuiFrameSetCtrl = new GuiFrameSetCtrlObject(ref c);
-	_mGuiGameListMenuCtrl = new GuiGameListMenuCtrlObject(ref c);
-	_mGuiGameListOptionsCtrl = new GuiGameListOptionsCtrlObject(ref c);
-	_mGuiGraphCtrl = new GuiGraphCtrlObject(ref c);
-	_mGuiIconButtonCtrl = new GuiIconButtonCtrlObject(ref c);
-	_mGuiImageList = new GuiImageListObject(ref c);
-	_mGuiInspectorTypeBitMask32 = new GuiInspectorTypeBitMask32Object(ref c);
-	_mGuiInspectorTypeFileName = new GuiInspectorTypeFileNameObject(ref c);
-	_mGuiListBoxCtrl = new GuiListBoxCtrlObject(ref c);
-	_mGuiMaterialPreview = new GuiMaterialPreviewObject(ref c);
-	_mGuiMenuBar = new GuiMenuBarObject(ref c);
-	_mGuiMessageVectorCtrl = new GuiMessageVectorCtrlObject(ref c);
-	_mGuiMissionAreaCtrl = new GuiMissionAreaCtrlObject(ref c);
-	_mGuiMLTextCtrl = new GuiMLTextCtrlObject(ref c);
-	_mGuiObjectView = new GuiObjectViewObject(ref c);
-	_mGuiPaneControl = new GuiPaneControlObject(ref c);
-	_mGuiProgressBitmapCtrl = new GuiProgressBitmapCtrlObject(ref c);
-	_mGuiRolloutCtrl = new GuiRolloutCtrlObject(ref c);
-	_mGuiScrollCtrl = new GuiScrollCtrlObject(ref c);
-	_mGuiShapeEdPreview = new GuiShapeEdPreviewObject(ref c);
-	_mGuiSliderCtrl = new GuiSliderCtrlObject(ref c);
-	_mGuiStackControl = new GuiStackControlObject(ref c);
-	_mGuiSwatchButtonCtrl = new GuiSwatchButtonCtrlObject(ref c);
-	_mGuiTabBookCtrl = new GuiTabBookCtrlObject(ref c);
-	_mGuiTableControl = new GuiTableControlObject(ref c);
-	_mGuiTabPageCtrl = new GuiTabPageCtrlObject(ref c);
-	_mGuiTextCtrl = new GuiTextCtrlObject(ref c);
-	_mGuiTextListCtrl = new GuiTextListCtrlObject(ref c);
-	_mGuiTheoraCtrl = new GuiTheoraCtrlObject(ref c);
-	_mGuiTSCtrl = new GuiTSCtrlObject(ref c);
-	_mGuiWindowCtrl = new GuiWindowCtrlObject(ref c);
-	_mHTTPObject = new HTTPObjectObject(ref c);
-	_mItem = new ItemObject(ref c);
-	_mLevelInfo = new LevelInfoObject(ref c);
-	_mLightDescription = new LightDescriptionObject(ref c);
-	_mLightFlareData = new LightFlareDataObject(ref c);
-	_mLightning = new LightningObject(ref c);
-	_mMeshRoad = new MeshRoadObject(ref c);
-	_mMissionArea = new MissionAreaObject(ref c);
-	_mNavMesh = new NavMeshObject(ref c);
-	_mNavPath = new NavPathObject(ref c);
-	_mNetConnection = new NetConnectionObject(ref c);
-	_mNetObject = new NetObjectObject(ref c);
-	_mParticleData = new ParticleDataObject(ref c);
-	_mParticleEmitterData = new ParticleEmitterDataObject(ref c);
-	_mParticleEmitterNode = new ParticleEmitterNodeObject(ref c);
-	_mPathCamera = new PathCameraObject(ref c);
-	_mPhysicalZone = new PhysicalZoneObject(ref c);
-	_mPhysicsForce = new PhysicsForceObject(ref c);
-	_mPhysicsShape = new PhysicsShapeObject(ref c);
-	_mPlayer = new PlayerObject(ref c);
-	_mPortal = new PortalObject(ref c);
-	_mPostEffect = new PostEffectObject(ref c);
-	_mPrecipitation = new PrecipitationObject(ref c);
-	_mProjectile = new ProjectileObject(ref c);
-	_mProximityMine = new ProximityMineObject(ref c);
-	_mRenderBinManager = new RenderBinManagerObject(ref c);
-	_mRenderMeshExample = new RenderMeshExampleObject(ref c);
-	_mRenderPassManager = new RenderPassManagerObject(ref c);
-	_mRenderPassStateToken = new RenderPassStateTokenObject(ref c);
-	_mRigidShape = new RigidShapeObject(ref c);
-	_mRiver = new RiverObject(ref c);
-	_mScatterSky = new ScatterSkyObject(ref c);
-	_mSceneObject = new SceneObjectObject(ref c);
-	_mScriptTickObject = new ScriptTickObjectObject(ref c);
-	_mSFXController = new SFXControllerObject(ref c);
-	_mSFXEmitter = new SFXEmitterObject(ref c);
-	_mSFXParameter = new SFXParameterObject(ref c);
-	_mSFXProfile = new SFXProfileObject(ref c);
-	_mSFXSound = new SFXSoundObject(ref c);
-	_mSFXState = new SFXStateObject(ref c);
-	_mShaderData = new ShaderDataObject(ref c);
-	_mShapeBase = new ShapeBaseObject(ref c);
-	_mShapeBaseData = new ShapeBaseDataObject(ref c);
-	_mSimpleNetObject = new SimpleNetObjectObject(ref c);
-	_mStreamObject = new StreamObjectObject(ref c);
-	_mTCPObject = new TCPObjectObject(ref c);
-	_mTimeOfDay = new TimeOfDayObject(ref c);
-	_mTrigger = new TriggerObject(ref c);
-	_mTSAttachable = new TSAttachableObject(ref c);
-	_mTSDynamic = new TSDynamicObject(ref c);
-	_mTSPathShape = new TSPathShapeObject(ref c);
-	_mTSShapeConstructor = new TSShapeConstructorObject(ref c);
-	_mTSStatic = new TSStaticObject(ref c);
-	_mTurretShape = new TurretShapeObject(ref c);
-	_mVolumetricFog = new VolumetricFogObject(ref c);
-	_mWalkableShape = new WalkableShapeObject(ref c);
-	_mWheeledVehicle = new WheeledVehicleObject(ref c);
-	_mWorldEditorSelection = new WorldEditorSelectionObject(ref c);
-	_mZipObject = new ZipObjectObject(ref c);
-	_mZone = new ZoneObject(ref c);
+            _mConsoleobject = new ConsoleObject();
+            _mMathobject = new tMath();
+            	_mUtil = new UtilObject();
+	_mAIClient = new AIClientObject();
+	_mAIConnection = new AIConnectionObject();
+	_mAIPlayer = new AIPlayerObject();
+	_mCompoundUndoAction = new CompoundUndoActionObject();
+	_mConsoleLogger = new ConsoleLoggerObject();
+	_mCreatorTree = new CreatorTreeObject();
+	_mDbgFileView = new DbgFileViewObject();
+	_mEditManager = new EditManagerObject();
+	_mEventManager = new EventManagerObject();
+	_mFieldBrushObject = new FieldBrushObjectObject();
+	_mFileObject = new FileObjectObject();
+	_mForest = new ForestObject();
+	_mForestBrush = new ForestBrushObject();
+	_mForestBrushTool = new ForestBrushToolObject();
+	_mForestEditorCtrl = new ForestEditorCtrlObject();
+	_mForestSelectionTool = new ForestSelectionToolObject();
+	_mGuiBitmapCtrl = new GuiBitmapCtrlObject();
+	_mGuiCanvas = new GuiCanvasObject();
+	_mGuiColorPickerCtrl = new GuiColorPickerCtrlObject();
+	_mGuiControl = new GuiControlObject();
+	_mGuiControlProfile = new GuiControlProfileObject();
+	_mGuiConvexEditorCtrl = new GuiConvexEditorCtrlObject();
+	_mGuiDecalEditorCtrl = new GuiDecalEditorCtrlObject();
+	_mGuiEditCtrl = new GuiEditCtrlObject();
+	_mGuiFileTreeCtrl = new GuiFileTreeCtrlObject();
+	_mGuiFilterCtrl = new GuiFilterCtrlObject();
+	_mGuiGradientCtrl = new GuiGradientCtrlObject();
+	_mGuiIdleCamFadeBitmapCtrl = new GuiIdleCamFadeBitmapCtrlObject();
+	_mGuiInspector = new GuiInspectorObject();
+	_mGuiInspectorDynamicField = new GuiInspectorDynamicFieldObject();
+	_mGuiInspectorDynamicGroup = new GuiInspectorDynamicGroupObject();
+	_mGuiInspectorField = new GuiInspectorFieldObject();
+	_mGuiMaterialCtrl = new GuiMaterialCtrlObject();
+	_mGuiMeshRoadEditorCtrl = new GuiMeshRoadEditorCtrlObject();
+	_mGuiMissionAreaEditorCtrl = new GuiMissionAreaEditorCtrlObject();
+	_mGuiNavEditorCtrl = new GuiNavEditorCtrlObject();
+	_mGuiParticleGraphCtrl = new GuiParticleGraphCtrlObject();
+	_mGuiPopUpMenuCtrl = new GuiPopUpMenuCtrlObject();
+	_mGuiPopUpMenuCtrlEx = new GuiPopUpMenuCtrlExObject();
+	_mGuiRiverEditorCtrl = new GuiRiverEditorCtrlObject();
+	_mGuiRoadEditorCtrl = new GuiRoadEditorCtrlObject();
+	_mGuiTerrPreviewCtrl = new GuiTerrPreviewCtrlObject();
+	_mGuiTextEditCtrl = new GuiTextEditCtrlObject();
+	_mGuiTickCtrl = new GuiTickCtrlObject();
+	_mGuiToolboxButtonCtrl = new GuiToolboxButtonCtrlObject();
+	_mGuiTreeViewCtrl = new GuiTreeViewCtrlObject();
+	_mGuiVariableInspector = new GuiVariableInspectorObject();
+	_mLangTable = new LangTableObject();
+	_mLightBase = new LightBaseObject();
+	_mMaterial = new MaterialObject();
+	_mMECreateUndoAction = new MECreateUndoActionObject();
+	_mMEDeleteUndoAction = new MEDeleteUndoActionObject();
+	_mMenuBar = new MenuBarObject();
+	_mMessage = new MessageObject();
+	_mMessageVector = new MessageVectorObject();
+	_mPersistenceManager = new PersistenceManagerObject();
+	_mPhysicsDebrisData = new PhysicsDebrisDataObject();
+	_mPopupMenu = new PopupMenuObject();
+	_mReadXML = new ReadXMLObject();
+	_mSettings = new SettingsObject();
+	_mSFXSource = new SFXSourceObject();
+	_mSimComponent = new SimComponentObject();
+	_mSimDataBlock = new SimDataBlockObject();
+	_mSimObject = new SimObjectObject();
+	_mSimPersistSet = new SimPersistSetObject();
+	_mSimResponseCurve = new SimResponseCurveObject();
+	_mSimSet = new SimSetObject();
+	_mSimXMLDocument = new SimXMLDocumentObject();
+	_mSkyBox = new SkyBoxObject();
+	_mSpawnSphere = new SpawnSphereObject();
+	_mStaticShape = new StaticShapeObject();
+	_mSun = new SunObject();
+	_mTerrainBlock = new TerrainBlockObject();
+	_mTerrainEditor = new TerrainEditorObject();
+	_mTerrainSmoothAction = new TerrainSmoothActionObject();
+	_mTerrainSolderEdgesAction = new TerrainSolderEdgesActionObject();
+	_mTheoraTextureObject = new TheoraTextureObjectObject();
+	_mUndoAction = new UndoActionObject();
+	_mUndoManager = new UndoManagerObject();
+	_mWorldEditor = new WorldEditorObject();
+	_mActionMap = new ActionMapObject();
+	_mAITurretShape = new AITurretShapeObject();
+	_mArrayObject = new ArrayObjectObject();
+	_mCamera = new CameraObject();
+	_mCoverPoint = new CoverPointObject();
+	_mCubemapData = new CubemapDataObject();
+	_mDebris = new DebrisObject();
+	_mDebugDrawer = new DebugDrawerObject();
+	_mDecalData = new DecalDataObject();
+	_mDecalRoad = new DecalRoadObject();
+	_mDynamicConsoleMethodComponent = new DynamicConsoleMethodComponentObject();
+	_mEditTSCtrl = new EditTSCtrlObject();
+	_mFileDialog = new FileDialogObject();
+	_mFileStreamObject = new FileStreamObjectObject();
+	_mFlyingVehicle = new FlyingVehicleObject();
+	_mForestWindEmitter = new ForestWindEmitterObject();
+	_mGameBase = new GameBaseObject();
+	_mGameConnection = new GameConnectionObject();
+	_mGroundPlane = new GroundPlaneObject();
+	_mGuiAutoCompleteCtrl = new GuiAutoCompleteCtrlObject();
+	_mGuiAutoScrollCtrl = new GuiAutoScrollCtrlObject();
+	_mGuiBitmapButtonCtrl = new GuiBitmapButtonCtrlObject();
+	_mGuiButtonBaseCtrl = new GuiButtonBaseCtrlObject();
+	_mGuiCheckBoxCtrl = new GuiCheckBoxCtrlObject();
+	_mGuiChunkedBitmapCtrl = new GuiChunkedBitmapCtrlObject();
+	_mGuiClockHud = new GuiClockHudObject();
+	_mGuiDirectoryFileListCtrl = new GuiDirectoryFileListCtrlObject();
+	_mGuiDragAndDropControl = new GuiDragAndDropControlObject();
+	_mGuiDynamicCtrlArrayControl = new GuiDynamicCtrlArrayControlObject();
+	_mGuiFormCtrl = new GuiFormCtrlObject();
+	_mGuiFrameSetCtrl = new GuiFrameSetCtrlObject();
+	_mGuiGameListMenuCtrl = new GuiGameListMenuCtrlObject();
+	_mGuiGameListOptionsCtrl = new GuiGameListOptionsCtrlObject();
+	_mGuiGraphCtrl = new GuiGraphCtrlObject();
+	_mGuiIconButtonCtrl = new GuiIconButtonCtrlObject();
+	_mGuiImageList = new GuiImageListObject();
+	_mGuiInspectorTypeBitMask32 = new GuiInspectorTypeBitMask32Object();
+	_mGuiInspectorTypeFileName = new GuiInspectorTypeFileNameObject();
+	_mGuiListBoxCtrl = new GuiListBoxCtrlObject();
+	_mGuiMaterialPreview = new GuiMaterialPreviewObject();
+	_mGuiMenuBar = new GuiMenuBarObject();
+	_mGuiMessageVectorCtrl = new GuiMessageVectorCtrlObject();
+	_mGuiMissionAreaCtrl = new GuiMissionAreaCtrlObject();
+	_mGuiMLTextCtrl = new GuiMLTextCtrlObject();
+	_mGuiObjectView = new GuiObjectViewObject();
+	_mGuiPaneControl = new GuiPaneControlObject();
+	_mGuiProgressBitmapCtrl = new GuiProgressBitmapCtrlObject();
+	_mGuiRolloutCtrl = new GuiRolloutCtrlObject();
+	_mGuiScrollCtrl = new GuiScrollCtrlObject();
+	_mGuiShapeEdPreview = new GuiShapeEdPreviewObject();
+	_mGuiSliderCtrl = new GuiSliderCtrlObject();
+	_mGuiStackControl = new GuiStackControlObject();
+	_mGuiSwatchButtonCtrl = new GuiSwatchButtonCtrlObject();
+	_mGuiTabBookCtrl = new GuiTabBookCtrlObject();
+	_mGuiTableControl = new GuiTableControlObject();
+	_mGuiTabPageCtrl = new GuiTabPageCtrlObject();
+	_mGuiTextCtrl = new GuiTextCtrlObject();
+	_mGuiTextListCtrl = new GuiTextListCtrlObject();
+	_mGuiTheoraCtrl = new GuiTheoraCtrlObject();
+	_mGuiTSCtrl = new GuiTSCtrlObject();
+	_mGuiWindowCtrl = new GuiWindowCtrlObject();
+	_mHTTPObject = new HTTPObjectObject();
+	_mItem = new ItemObject();
+	_mLevelInfo = new LevelInfoObject();
+	_mLightDescription = new LightDescriptionObject();
+	_mLightFlareData = new LightFlareDataObject();
+	_mLightning = new LightningObject();
+	_mMeshRoad = new MeshRoadObject();
+	_mMissionArea = new MissionAreaObject();
+	_mNavMesh = new NavMeshObject();
+	_mNavPath = new NavPathObject();
+	_mNetConnection = new NetConnectionObject();
+	_mNetObject = new NetObjectObject();
+	_mParticleData = new ParticleDataObject();
+	_mParticleEmitterData = new ParticleEmitterDataObject();
+	_mParticleEmitterNode = new ParticleEmitterNodeObject();
+	_mPathCamera = new PathCameraObject();
+	_mPhysicalZone = new PhysicalZoneObject();
+	_mPhysicsForce = new PhysicsForceObject();
+	_mPhysicsShape = new PhysicsShapeObject();
+	_mPlayer = new PlayerObject();
+	_mPortal = new PortalObject();
+	_mPostEffect = new PostEffectObject();
+	_mPrecipitation = new PrecipitationObject();
+	_mProjectile = new ProjectileObject();
+	_mProximityMine = new ProximityMineObject();
+	_mRenderBinManager = new RenderBinManagerObject();
+	_mRenderMeshExample = new RenderMeshExampleObject();
+	_mRenderPassManager = new RenderPassManagerObject();
+	_mRenderPassStateToken = new RenderPassStateTokenObject();
+	_mRigidShape = new RigidShapeObject();
+	_mRiver = new RiverObject();
+	_mScatterSky = new ScatterSkyObject();
+	_mSceneObject = new SceneObjectObject();
+	_mScriptTickObject = new ScriptTickObjectObject();
+	_mSFXController = new SFXControllerObject();
+	_mSFXEmitter = new SFXEmitterObject();
+	_mSFXParameter = new SFXParameterObject();
+	_mSFXProfile = new SFXProfileObject();
+	_mSFXSound = new SFXSoundObject();
+	_mSFXState = new SFXStateObject();
+	_mShaderData = new ShaderDataObject();
+	_mShapeBase = new ShapeBaseObject();
+	_mShapeBaseData = new ShapeBaseDataObject();
+	_mSimpleNetObject = new SimpleNetObjectObject();
+	_mStreamObject = new StreamObjectObject();
+	_mTCPObject = new TCPObjectObject();
+	_mTimeOfDay = new TimeOfDayObject();
+	_mTrigger = new TriggerObject();
+	_mTSAttachable = new TSAttachableObject();
+	_mTSDynamic = new TSDynamicObject();
+	_mTSPathShape = new TSPathShapeObject();
+	_mTSShapeConstructor = new TSShapeConstructorObject();
+	_mTSStatic = new TSStaticObject();
+	_mTurretShape = new TurretShapeObject();
+	_mVolumetricFog = new VolumetricFogObject();
+	_mWalkableShape = new WalkableShapeObject();
+	_mWheeledVehicle = new WheeledVehicleObject();
+	_mWorldEditorSelection = new WorldEditorSelectionObject();
+	_mZipObject = new ZipObjectObject();
+	_mZone = new ZoneObject();
 }
-public UtilObject _mUtil;
+private static UtilObject _mUtil;
         /// <summary>
         /// 
         /// </summary>
-public UtilObject Util{get { return _mUtil; }}
-public AIClientObject _mAIClient;
+public static UtilObject Util{get { return _mUtil; }}
+private static AIClientObject _mAIClient;
         /// <summary>
         /// 
         /// </summary>
-public AIClientObject AIClient{get { return _mAIClient; }}
-public AIConnectionObject _mAIConnection;
+public static AIClientObject AIClient{get { return _mAIClient; }}
+private static AIConnectionObject _mAIConnection;
         /// <summary>
         /// 
         /// </summary>
-public AIConnectionObject AIConnection{get { return _mAIConnection; }}
-public AIPlayerObject _mAIPlayer;
+public static AIConnectionObject AIConnection{get { return _mAIConnection; }}
+private static AIPlayerObject _mAIPlayer;
         /// <summary>
         /// 
         /// </summary>
-public AIPlayerObject AIPlayer{get { return _mAIPlayer; }}
-public CompoundUndoActionObject _mCompoundUndoAction;
+public static AIPlayerObject AIPlayer{get { return _mAIPlayer; }}
+private static CompoundUndoActionObject _mCompoundUndoAction;
         /// <summary>
         /// 
         /// </summary>
-public CompoundUndoActionObject CompoundUndoAction{get { return _mCompoundUndoAction; }}
-public ConsoleLoggerObject _mConsoleLogger;
+public static CompoundUndoActionObject CompoundUndoAction{get { return _mCompoundUndoAction; }}
+private static ConsoleLoggerObject _mConsoleLogger;
         /// <summary>
         /// 
         /// </summary>
-public ConsoleLoggerObject ConsoleLogger{get { return _mConsoleLogger; }}
-public CreatorTreeObject _mCreatorTree;
+public static ConsoleLoggerObject ConsoleLogger{get { return _mConsoleLogger; }}
+private static CreatorTreeObject _mCreatorTree;
         /// <summary>
         /// 
         /// </summary>
-public CreatorTreeObject CreatorTree{get { return _mCreatorTree; }}
-public DbgFileViewObject _mDbgFileView;
+public static CreatorTreeObject CreatorTree{get { return _mCreatorTree; }}
+private static DbgFileViewObject _mDbgFileView;
         /// <summary>
         /// 
         /// </summary>
-public DbgFileViewObject DbgFileView{get { return _mDbgFileView; }}
-public EditManagerObject _mEditManager;
+public static DbgFileViewObject DbgFileView{get { return _mDbgFileView; }}
+private static EditManagerObject _mEditManager;
         /// <summary>
         /// 
         /// </summary>
-public EditManagerObject EditManager{get { return _mEditManager; }}
-public EventManagerObject _mEventManager;
+public static EditManagerObject EditManager{get { return _mEditManager; }}
+private static EventManagerObject _mEventManager;
         /// <summary>
         /// 
         /// </summary>
-public EventManagerObject EventManager{get { return _mEventManager; }}
-public FieldBrushObjectObject _mFieldBrushObject;
+public static EventManagerObject EventManager{get { return _mEventManager; }}
+private static FieldBrushObjectObject _mFieldBrushObject;
         /// <summary>
         /// 
         /// </summary>
-public FieldBrushObjectObject FieldBrushObject{get { return _mFieldBrushObject; }}
-public FileObjectObject _mFileObject;
+public static FieldBrushObjectObject FieldBrushObject{get { return _mFieldBrushObject; }}
+private static FileObjectObject _mFileObject;
         /// <summary>
         /// 
         /// </summary>
-public FileObjectObject FileObject{get { return _mFileObject; }}
-public ForestObject _mForest;
+public static FileObjectObject FileObject{get { return _mFileObject; }}
+private static ForestObject _mForest;
         /// <summary>
         /// 
         /// </summary>
-public ForestObject Forest{get { return _mForest; }}
-public ForestBrushObject _mForestBrush;
+public static ForestObject Forest{get { return _mForest; }}
+private static ForestBrushObject _mForestBrush;
         /// <summary>
         /// 
         /// </summary>
-public ForestBrushObject ForestBrush{get { return _mForestBrush; }}
-public ForestBrushToolObject _mForestBrushTool;
+public static ForestBrushObject ForestBrush{get { return _mForestBrush; }}
+private static ForestBrushToolObject _mForestBrushTool;
         /// <summary>
         /// 
         /// </summary>
-public ForestBrushToolObject ForestBrushTool{get { return _mForestBrushTool; }}
-public ForestEditorCtrlObject _mForestEditorCtrl;
+public static ForestBrushToolObject ForestBrushTool{get { return _mForestBrushTool; }}
+private static ForestEditorCtrlObject _mForestEditorCtrl;
         /// <summary>
         /// 
         /// </summary>
-public ForestEditorCtrlObject ForestEditorCtrl{get { return _mForestEditorCtrl; }}
-public ForestSelectionToolObject _mForestSelectionTool;
+public static ForestEditorCtrlObject ForestEditorCtrl{get { return _mForestEditorCtrl; }}
+private static ForestSelectionToolObject _mForestSelectionTool;
         /// <summary>
         /// 
         /// </summary>
-public ForestSelectionToolObject ForestSelectionTool{get { return _mForestSelectionTool; }}
-public GuiBitmapCtrlObject _mGuiBitmapCtrl;
+public static ForestSelectionToolObject ForestSelectionTool{get { return _mForestSelectionTool; }}
+private static GuiBitmapCtrlObject _mGuiBitmapCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiBitmapCtrlObject GuiBitmapCtrl{get { return _mGuiBitmapCtrl; }}
-public GuiCanvasObject _mGuiCanvas;
+public static GuiBitmapCtrlObject GuiBitmapCtrl{get { return _mGuiBitmapCtrl; }}
+private static GuiCanvasObject _mGuiCanvas;
         /// <summary>
         /// 
         /// </summary>
-public GuiCanvasObject GuiCanvas{get { return _mGuiCanvas; }}
-public GuiColorPickerCtrlObject _mGuiColorPickerCtrl;
+public static GuiCanvasObject GuiCanvas{get { return _mGuiCanvas; }}
+private static GuiColorPickerCtrlObject _mGuiColorPickerCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiColorPickerCtrlObject GuiColorPickerCtrl{get { return _mGuiColorPickerCtrl; }}
-public GuiControlObject _mGuiControl;
+public static GuiColorPickerCtrlObject GuiColorPickerCtrl{get { return _mGuiColorPickerCtrl; }}
+private static GuiControlObject _mGuiControl;
         /// <summary>
         /// 
         /// </summary>
-public GuiControlObject GuiControl{get { return _mGuiControl; }}
-public GuiControlProfileObject _mGuiControlProfile;
+public static GuiControlObject GuiControl{get { return _mGuiControl; }}
+private static GuiControlProfileObject _mGuiControlProfile;
         /// <summary>
         /// 
         /// </summary>
-public GuiControlProfileObject GuiControlProfile{get { return _mGuiControlProfile; }}
-public GuiConvexEditorCtrlObject _mGuiConvexEditorCtrl;
+public static GuiControlProfileObject GuiControlProfile{get { return _mGuiControlProfile; }}
+private static GuiConvexEditorCtrlObject _mGuiConvexEditorCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiConvexEditorCtrlObject GuiConvexEditorCtrl{get { return _mGuiConvexEditorCtrl; }}
-public GuiDecalEditorCtrlObject _mGuiDecalEditorCtrl;
+public static GuiConvexEditorCtrlObject GuiConvexEditorCtrl{get { return _mGuiConvexEditorCtrl; }}
+private static GuiDecalEditorCtrlObject _mGuiDecalEditorCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiDecalEditorCtrlObject GuiDecalEditorCtrl{get { return _mGuiDecalEditorCtrl; }}
-public GuiEditCtrlObject _mGuiEditCtrl;
+public static GuiDecalEditorCtrlObject GuiDecalEditorCtrl{get { return _mGuiDecalEditorCtrl; }}
+private static GuiEditCtrlObject _mGuiEditCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiEditCtrlObject GuiEditCtrl{get { return _mGuiEditCtrl; }}
-public GuiFileTreeCtrlObject _mGuiFileTreeCtrl;
+public static GuiEditCtrlObject GuiEditCtrl{get { return _mGuiEditCtrl; }}
+private static GuiFileTreeCtrlObject _mGuiFileTreeCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiFileTreeCtrlObject GuiFileTreeCtrl{get { return _mGuiFileTreeCtrl; }}
-public GuiFilterCtrlObject _mGuiFilterCtrl;
+public static GuiFileTreeCtrlObject GuiFileTreeCtrl{get { return _mGuiFileTreeCtrl; }}
+private static GuiFilterCtrlObject _mGuiFilterCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiFilterCtrlObject GuiFilterCtrl{get { return _mGuiFilterCtrl; }}
-public GuiGradientCtrlObject _mGuiGradientCtrl;
+public static GuiFilterCtrlObject GuiFilterCtrl{get { return _mGuiFilterCtrl; }}
+private static GuiGradientCtrlObject _mGuiGradientCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiGradientCtrlObject GuiGradientCtrl{get { return _mGuiGradientCtrl; }}
-public GuiIdleCamFadeBitmapCtrlObject _mGuiIdleCamFadeBitmapCtrl;
+public static GuiGradientCtrlObject GuiGradientCtrl{get { return _mGuiGradientCtrl; }}
+private static GuiIdleCamFadeBitmapCtrlObject _mGuiIdleCamFadeBitmapCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiIdleCamFadeBitmapCtrlObject GuiIdleCamFadeBitmapCtrl{get { return _mGuiIdleCamFadeBitmapCtrl; }}
-public GuiInspectorObject _mGuiInspector;
+public static GuiIdleCamFadeBitmapCtrlObject GuiIdleCamFadeBitmapCtrl{get { return _mGuiIdleCamFadeBitmapCtrl; }}
+private static GuiInspectorObject _mGuiInspector;
         /// <summary>
         /// 
         /// </summary>
-public GuiInspectorObject GuiInspector{get { return _mGuiInspector; }}
-public GuiInspectorDynamicFieldObject _mGuiInspectorDynamicField;
+public static GuiInspectorObject GuiInspector{get { return _mGuiInspector; }}
+private static GuiInspectorDynamicFieldObject _mGuiInspectorDynamicField;
         /// <summary>
         /// 
         /// </summary>
-public GuiInspectorDynamicFieldObject GuiInspectorDynamicField{get { return _mGuiInspectorDynamicField; }}
-public GuiInspectorDynamicGroupObject _mGuiInspectorDynamicGroup;
+public static GuiInspectorDynamicFieldObject GuiInspectorDynamicField{get { return _mGuiInspectorDynamicField; }}
+private static GuiInspectorDynamicGroupObject _mGuiInspectorDynamicGroup;
         /// <summary>
         /// 
         /// </summary>
-public GuiInspectorDynamicGroupObject GuiInspectorDynamicGroup{get { return _mGuiInspectorDynamicGroup; }}
-public GuiInspectorFieldObject _mGuiInspectorField;
+public static GuiInspectorDynamicGroupObject GuiInspectorDynamicGroup{get { return _mGuiInspectorDynamicGroup; }}
+private static GuiInspectorFieldObject _mGuiInspectorField;
         /// <summary>
         /// 
         /// </summary>
-public GuiInspectorFieldObject GuiInspectorField{get { return _mGuiInspectorField; }}
-public GuiMaterialCtrlObject _mGuiMaterialCtrl;
+public static GuiInspectorFieldObject GuiInspectorField{get { return _mGuiInspectorField; }}
+private static GuiMaterialCtrlObject _mGuiMaterialCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiMaterialCtrlObject GuiMaterialCtrl{get { return _mGuiMaterialCtrl; }}
-public GuiMeshRoadEditorCtrlObject _mGuiMeshRoadEditorCtrl;
+public static GuiMaterialCtrlObject GuiMaterialCtrl{get { return _mGuiMaterialCtrl; }}
+private static GuiMeshRoadEditorCtrlObject _mGuiMeshRoadEditorCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiMeshRoadEditorCtrlObject GuiMeshRoadEditorCtrl{get { return _mGuiMeshRoadEditorCtrl; }}
-public GuiMissionAreaEditorCtrlObject _mGuiMissionAreaEditorCtrl;
+public static GuiMeshRoadEditorCtrlObject GuiMeshRoadEditorCtrl{get { return _mGuiMeshRoadEditorCtrl; }}
+private static GuiMissionAreaEditorCtrlObject _mGuiMissionAreaEditorCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiMissionAreaEditorCtrlObject GuiMissionAreaEditorCtrl{get { return _mGuiMissionAreaEditorCtrl; }}
-public GuiNavEditorCtrlObject _mGuiNavEditorCtrl;
+public static GuiMissionAreaEditorCtrlObject GuiMissionAreaEditorCtrl{get { return _mGuiMissionAreaEditorCtrl; }}
+private static GuiNavEditorCtrlObject _mGuiNavEditorCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiNavEditorCtrlObject GuiNavEditorCtrl{get { return _mGuiNavEditorCtrl; }}
-public GuiParticleGraphCtrlObject _mGuiParticleGraphCtrl;
+public static GuiNavEditorCtrlObject GuiNavEditorCtrl{get { return _mGuiNavEditorCtrl; }}
+private static GuiParticleGraphCtrlObject _mGuiParticleGraphCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiParticleGraphCtrlObject GuiParticleGraphCtrl{get { return _mGuiParticleGraphCtrl; }}
-public GuiPopUpMenuCtrlObject _mGuiPopUpMenuCtrl;
+public static GuiParticleGraphCtrlObject GuiParticleGraphCtrl{get { return _mGuiParticleGraphCtrl; }}
+private static GuiPopUpMenuCtrlObject _mGuiPopUpMenuCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiPopUpMenuCtrlObject GuiPopUpMenuCtrl{get { return _mGuiPopUpMenuCtrl; }}
-public GuiPopUpMenuCtrlExObject _mGuiPopUpMenuCtrlEx;
+public static GuiPopUpMenuCtrlObject GuiPopUpMenuCtrl{get { return _mGuiPopUpMenuCtrl; }}
+private static GuiPopUpMenuCtrlExObject _mGuiPopUpMenuCtrlEx;
         /// <summary>
         /// 
         /// </summary>
-public GuiPopUpMenuCtrlExObject GuiPopUpMenuCtrlEx{get { return _mGuiPopUpMenuCtrlEx; }}
-public GuiRiverEditorCtrlObject _mGuiRiverEditorCtrl;
+public static GuiPopUpMenuCtrlExObject GuiPopUpMenuCtrlEx{get { return _mGuiPopUpMenuCtrlEx; }}
+private static GuiRiverEditorCtrlObject _mGuiRiverEditorCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiRiverEditorCtrlObject GuiRiverEditorCtrl{get { return _mGuiRiverEditorCtrl; }}
-public GuiRoadEditorCtrlObject _mGuiRoadEditorCtrl;
+public static GuiRiverEditorCtrlObject GuiRiverEditorCtrl{get { return _mGuiRiverEditorCtrl; }}
+private static GuiRoadEditorCtrlObject _mGuiRoadEditorCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiRoadEditorCtrlObject GuiRoadEditorCtrl{get { return _mGuiRoadEditorCtrl; }}
-public GuiTerrPreviewCtrlObject _mGuiTerrPreviewCtrl;
+public static GuiRoadEditorCtrlObject GuiRoadEditorCtrl{get { return _mGuiRoadEditorCtrl; }}
+private static GuiTerrPreviewCtrlObject _mGuiTerrPreviewCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiTerrPreviewCtrlObject GuiTerrPreviewCtrl{get { return _mGuiTerrPreviewCtrl; }}
-public GuiTextEditCtrlObject _mGuiTextEditCtrl;
+public static GuiTerrPreviewCtrlObject GuiTerrPreviewCtrl{get { return _mGuiTerrPreviewCtrl; }}
+private static GuiTextEditCtrlObject _mGuiTextEditCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiTextEditCtrlObject GuiTextEditCtrl{get { return _mGuiTextEditCtrl; }}
-public GuiTickCtrlObject _mGuiTickCtrl;
+public static GuiTextEditCtrlObject GuiTextEditCtrl{get { return _mGuiTextEditCtrl; }}
+private static GuiTickCtrlObject _mGuiTickCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiTickCtrlObject GuiTickCtrl{get { return _mGuiTickCtrl; }}
-public GuiToolboxButtonCtrlObject _mGuiToolboxButtonCtrl;
+public static GuiTickCtrlObject GuiTickCtrl{get { return _mGuiTickCtrl; }}
+private static GuiToolboxButtonCtrlObject _mGuiToolboxButtonCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiToolboxButtonCtrlObject GuiToolboxButtonCtrl{get { return _mGuiToolboxButtonCtrl; }}
-public GuiTreeViewCtrlObject _mGuiTreeViewCtrl;
+public static GuiToolboxButtonCtrlObject GuiToolboxButtonCtrl{get { return _mGuiToolboxButtonCtrl; }}
+private static GuiTreeViewCtrlObject _mGuiTreeViewCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiTreeViewCtrlObject GuiTreeViewCtrl{get { return _mGuiTreeViewCtrl; }}
-public GuiVariableInspectorObject _mGuiVariableInspector;
+public static GuiTreeViewCtrlObject GuiTreeViewCtrl{get { return _mGuiTreeViewCtrl; }}
+private static GuiVariableInspectorObject _mGuiVariableInspector;
         /// <summary>
         /// 
         /// </summary>
-public GuiVariableInspectorObject GuiVariableInspector{get { return _mGuiVariableInspector; }}
-public LangTableObject _mLangTable;
+public static GuiVariableInspectorObject GuiVariableInspector{get { return _mGuiVariableInspector; }}
+private static LangTableObject _mLangTable;
         /// <summary>
         /// 
         /// </summary>
-public LangTableObject LangTable{get { return _mLangTable; }}
-public LightBaseObject _mLightBase;
+public static LangTableObject LangTable{get { return _mLangTable; }}
+private static LightBaseObject _mLightBase;
         /// <summary>
         /// 
         /// </summary>
-public LightBaseObject LightBase{get { return _mLightBase; }}
-public MaterialObject _mMaterial;
+public static LightBaseObject LightBase{get { return _mLightBase; }}
+private static MaterialObject _mMaterial;
         /// <summary>
         /// 
         /// </summary>
-public MaterialObject Material{get { return _mMaterial; }}
-public MECreateUndoActionObject _mMECreateUndoAction;
+public static MaterialObject Material{get { return _mMaterial; }}
+private static MECreateUndoActionObject _mMECreateUndoAction;
         /// <summary>
         /// 
         /// </summary>
-public MECreateUndoActionObject MECreateUndoAction{get { return _mMECreateUndoAction; }}
-public MEDeleteUndoActionObject _mMEDeleteUndoAction;
+public static MECreateUndoActionObject MECreateUndoAction{get { return _mMECreateUndoAction; }}
+private static MEDeleteUndoActionObject _mMEDeleteUndoAction;
         /// <summary>
         /// 
         /// </summary>
-public MEDeleteUndoActionObject MEDeleteUndoAction{get { return _mMEDeleteUndoAction; }}
-public MenuBarObject _mMenuBar;
+public static MEDeleteUndoActionObject MEDeleteUndoAction{get { return _mMEDeleteUndoAction; }}
+private static MenuBarObject _mMenuBar;
         /// <summary>
         /// 
         /// </summary>
-public MenuBarObject MenuBar{get { return _mMenuBar; }}
-public MessageObject _mMessage;
+public static MenuBarObject MenuBar{get { return _mMenuBar; }}
+private static MessageObject _mMessage;
         /// <summary>
         /// 
         /// </summary>
-public MessageObject Message{get { return _mMessage; }}
-public MessageVectorObject _mMessageVector;
+public static MessageObject Message{get { return _mMessage; }}
+private static MessageVectorObject _mMessageVector;
         /// <summary>
         /// 
         /// </summary>
-public MessageVectorObject MessageVector{get { return _mMessageVector; }}
-public PersistenceManagerObject _mPersistenceManager;
+public static MessageVectorObject MessageVector{get { return _mMessageVector; }}
+private static PersistenceManagerObject _mPersistenceManager;
         /// <summary>
         /// 
         /// </summary>
-public PersistenceManagerObject PersistenceManager{get { return _mPersistenceManager; }}
-public PhysicsDebrisDataObject _mPhysicsDebrisData;
+public static PersistenceManagerObject PersistenceManager{get { return _mPersistenceManager; }}
+private static PhysicsDebrisDataObject _mPhysicsDebrisData;
         /// <summary>
         /// 
         /// </summary>
-public PhysicsDebrisDataObject PhysicsDebrisData{get { return _mPhysicsDebrisData; }}
-public PopupMenuObject _mPopupMenu;
+public static PhysicsDebrisDataObject PhysicsDebrisData{get { return _mPhysicsDebrisData; }}
+private static PopupMenuObject _mPopupMenu;
         /// <summary>
         /// 
         /// </summary>
-public PopupMenuObject PopupMenu{get { return _mPopupMenu; }}
-public ReadXMLObject _mReadXML;
+public static PopupMenuObject PopupMenu{get { return _mPopupMenu; }}
+private static ReadXMLObject _mReadXML;
         /// <summary>
         /// 
         /// </summary>
-public ReadXMLObject ReadXML{get { return _mReadXML; }}
-public SettingsObject _mSettings;
+public static ReadXMLObject ReadXML{get { return _mReadXML; }}
+private static SettingsObject _mSettings;
         /// <summary>
         /// 
         /// </summary>
-public SettingsObject Settings{get { return _mSettings; }}
-public SFXSourceObject _mSFXSource;
+public static SettingsObject Settings{get { return _mSettings; }}
+private static SFXSourceObject _mSFXSource;
         /// <summary>
         /// 
         /// </summary>
-public SFXSourceObject SFXSource{get { return _mSFXSource; }}
-public SimComponentObject _mSimComponent;
+public static SFXSourceObject SFXSource{get { return _mSFXSource; }}
+private static SimComponentObject _mSimComponent;
         /// <summary>
         /// 
         /// </summary>
-public SimComponentObject SimComponent{get { return _mSimComponent; }}
-public SimDataBlockObject _mSimDataBlock;
+public static SimComponentObject SimComponent{get { return _mSimComponent; }}
+private static SimDataBlockObject _mSimDataBlock;
         /// <summary>
         /// 
         /// </summary>
-public SimDataBlockObject SimDataBlock{get { return _mSimDataBlock; }}
-public SimObjectObject _mSimObject;
+public static SimDataBlockObject SimDataBlock{get { return _mSimDataBlock; }}
+private static SimObjectObject _mSimObject;
         /// <summary>
         /// 
         /// </summary>
-public SimObjectObject SimObject{get { return _mSimObject; }}
-public SimPersistSetObject _mSimPersistSet;
+public static SimObjectObject SimObject{get { return _mSimObject; }}
+private static SimPersistSetObject _mSimPersistSet;
         /// <summary>
         /// 
         /// </summary>
-public SimPersistSetObject SimPersistSet{get { return _mSimPersistSet; }}
-public SimResponseCurveObject _mSimResponseCurve;
+public static SimPersistSetObject SimPersistSet{get { return _mSimPersistSet; }}
+private static SimResponseCurveObject _mSimResponseCurve;
         /// <summary>
         /// 
         /// </summary>
-public SimResponseCurveObject SimResponseCurve{get { return _mSimResponseCurve; }}
-public SimSetObject _mSimSet;
+public static SimResponseCurveObject SimResponseCurve{get { return _mSimResponseCurve; }}
+private static SimSetObject _mSimSet;
         /// <summary>
         /// 
         /// </summary>
-public SimSetObject SimSet{get { return _mSimSet; }}
-public SimXMLDocumentObject _mSimXMLDocument;
+public static SimSetObject SimSet{get { return _mSimSet; }}
+private static SimXMLDocumentObject _mSimXMLDocument;
         /// <summary>
         /// 
         /// </summary>
-public SimXMLDocumentObject SimXMLDocument{get { return _mSimXMLDocument; }}
-public SkyBoxObject _mSkyBox;
+public static SimXMLDocumentObject SimXMLDocument{get { return _mSimXMLDocument; }}
+private static SkyBoxObject _mSkyBox;
         /// <summary>
         /// 
         /// </summary>
-public SkyBoxObject SkyBox{get { return _mSkyBox; }}
-public SpawnSphereObject _mSpawnSphere;
+public static SkyBoxObject SkyBox{get { return _mSkyBox; }}
+private static SpawnSphereObject _mSpawnSphere;
         /// <summary>
         /// 
         /// </summary>
-public SpawnSphereObject SpawnSphere{get { return _mSpawnSphere; }}
-public StaticShapeObject _mStaticShape;
+public static SpawnSphereObject SpawnSphere{get { return _mSpawnSphere; }}
+private static StaticShapeObject _mStaticShape;
         /// <summary>
         /// 
         /// </summary>
-public StaticShapeObject StaticShape{get { return _mStaticShape; }}
-public SunObject _mSun;
+public static StaticShapeObject StaticShape{get { return _mStaticShape; }}
+private static SunObject _mSun;
         /// <summary>
         /// 
         /// </summary>
-public SunObject Sun{get { return _mSun; }}
-public TerrainBlockObject _mTerrainBlock;
+public static SunObject Sun{get { return _mSun; }}
+private static TerrainBlockObject _mTerrainBlock;
         /// <summary>
         /// 
         /// </summary>
-public TerrainBlockObject TerrainBlock{get { return _mTerrainBlock; }}
-public TerrainEditorObject _mTerrainEditor;
+public static TerrainBlockObject TerrainBlock{get { return _mTerrainBlock; }}
+private static TerrainEditorObject _mTerrainEditor;
         /// <summary>
         /// 
         /// </summary>
-public TerrainEditorObject TerrainEditor{get { return _mTerrainEditor; }}
-public TerrainSmoothActionObject _mTerrainSmoothAction;
+public static TerrainEditorObject TerrainEditor{get { return _mTerrainEditor; }}
+private static TerrainSmoothActionObject _mTerrainSmoothAction;
         /// <summary>
         /// 
         /// </summary>
-public TerrainSmoothActionObject TerrainSmoothAction{get { return _mTerrainSmoothAction; }}
-public TerrainSolderEdgesActionObject _mTerrainSolderEdgesAction;
+public static TerrainSmoothActionObject TerrainSmoothAction{get { return _mTerrainSmoothAction; }}
+private static TerrainSolderEdgesActionObject _mTerrainSolderEdgesAction;
         /// <summary>
         /// 
         /// </summary>
-public TerrainSolderEdgesActionObject TerrainSolderEdgesAction{get { return _mTerrainSolderEdgesAction; }}
-public TheoraTextureObjectObject _mTheoraTextureObject;
+public static TerrainSolderEdgesActionObject TerrainSolderEdgesAction{get { return _mTerrainSolderEdgesAction; }}
+private static TheoraTextureObjectObject _mTheoraTextureObject;
         /// <summary>
         /// 
         /// </summary>
-public TheoraTextureObjectObject TheoraTextureObject{get { return _mTheoraTextureObject; }}
-public UndoActionObject _mUndoAction;
+public static TheoraTextureObjectObject TheoraTextureObject{get { return _mTheoraTextureObject; }}
+private static UndoActionObject _mUndoAction;
         /// <summary>
         /// 
         /// </summary>
-public UndoActionObject UndoAction{get { return _mUndoAction; }}
-public UndoManagerObject _mUndoManager;
+public static UndoActionObject UndoAction{get { return _mUndoAction; }}
+private static UndoManagerObject _mUndoManager;
         /// <summary>
         /// 
         /// </summary>
-public UndoManagerObject UndoManager{get { return _mUndoManager; }}
-public WorldEditorObject _mWorldEditor;
+public static UndoManagerObject UndoManager{get { return _mUndoManager; }}
+private static WorldEditorObject _mWorldEditor;
         /// <summary>
         /// 
         /// </summary>
-public WorldEditorObject WorldEditor{get { return _mWorldEditor; }}
-public ActionMapObject _mActionMap;
+public static WorldEditorObject WorldEditor{get { return _mWorldEditor; }}
+private static ActionMapObject _mActionMap;
         /// <summary>
         /// 
         /// </summary>
-public ActionMapObject ActionMap{get { return _mActionMap; }}
-public AITurretShapeObject _mAITurretShape;
+public static ActionMapObject ActionMap{get { return _mActionMap; }}
+private static AITurretShapeObject _mAITurretShape;
         /// <summary>
         /// 
         /// </summary>
-public AITurretShapeObject AITurretShape{get { return _mAITurretShape; }}
-public ArrayObjectObject _mArrayObject;
+public static AITurretShapeObject AITurretShape{get { return _mAITurretShape; }}
+private static ArrayObjectObject _mArrayObject;
         /// <summary>
         /// 
         /// </summary>
-public ArrayObjectObject ArrayObject{get { return _mArrayObject; }}
-public CameraObject _mCamera;
+public static ArrayObjectObject ArrayObject{get { return _mArrayObject; }}
+private static CameraObject _mCamera;
         /// <summary>
         /// 
         /// </summary>
-public CameraObject Camera{get { return _mCamera; }}
-public CoverPointObject _mCoverPoint;
+public static CameraObject Camera{get { return _mCamera; }}
+private static CoverPointObject _mCoverPoint;
         /// <summary>
         /// 
         /// </summary>
-public CoverPointObject CoverPoint{get { return _mCoverPoint; }}
-public CubemapDataObject _mCubemapData;
+public static CoverPointObject CoverPoint{get { return _mCoverPoint; }}
+private static CubemapDataObject _mCubemapData;
         /// <summary>
         /// 
         /// </summary>
-public CubemapDataObject CubemapData{get { return _mCubemapData; }}
-public DebrisObject _mDebris;
+public static CubemapDataObject CubemapData{get { return _mCubemapData; }}
+private static DebrisObject _mDebris;
         /// <summary>
         /// 
         /// </summary>
-public DebrisObject Debris{get { return _mDebris; }}
-public DebugDrawerObject _mDebugDrawer;
+public static DebrisObject Debris{get { return _mDebris; }}
+private static DebugDrawerObject _mDebugDrawer;
         /// <summary>
         /// 
         /// </summary>
-public DebugDrawerObject DebugDrawer{get { return _mDebugDrawer; }}
-public DecalDataObject _mDecalData;
+public static DebugDrawerObject DebugDrawer{get { return _mDebugDrawer; }}
+private static DecalDataObject _mDecalData;
         /// <summary>
         /// 
         /// </summary>
-public DecalDataObject DecalData{get { return _mDecalData; }}
-public DecalRoadObject _mDecalRoad;
+public static DecalDataObject DecalData{get { return _mDecalData; }}
+private static DecalRoadObject _mDecalRoad;
         /// <summary>
         /// 
         /// </summary>
-public DecalRoadObject DecalRoad{get { return _mDecalRoad; }}
-public DynamicConsoleMethodComponentObject _mDynamicConsoleMethodComponent;
+public static DecalRoadObject DecalRoad{get { return _mDecalRoad; }}
+private static DynamicConsoleMethodComponentObject _mDynamicConsoleMethodComponent;
         /// <summary>
         /// 
         /// </summary>
-public DynamicConsoleMethodComponentObject DynamicConsoleMethodComponent{get { return _mDynamicConsoleMethodComponent; }}
-public EditTSCtrlObject _mEditTSCtrl;
+public static DynamicConsoleMethodComponentObject DynamicConsoleMethodComponent{get { return _mDynamicConsoleMethodComponent; }}
+private static EditTSCtrlObject _mEditTSCtrl;
         /// <summary>
         /// 
         /// </summary>
-public EditTSCtrlObject EditTSCtrl{get { return _mEditTSCtrl; }}
-public FileDialogObject _mFileDialog;
+public static EditTSCtrlObject EditTSCtrl{get { return _mEditTSCtrl; }}
+private static FileDialogObject _mFileDialog;
         /// <summary>
         /// 
         /// </summary>
-public FileDialogObject FileDialog{get { return _mFileDialog; }}
-public FileStreamObjectObject _mFileStreamObject;
+public static FileDialogObject FileDialog{get { return _mFileDialog; }}
+private static FileStreamObjectObject _mFileStreamObject;
         /// <summary>
         /// 
         /// </summary>
-public FileStreamObjectObject FileStreamObject{get { return _mFileStreamObject; }}
-public FlyingVehicleObject _mFlyingVehicle;
+public static FileStreamObjectObject FileStreamObject{get { return _mFileStreamObject; }}
+private static FlyingVehicleObject _mFlyingVehicle;
         /// <summary>
         /// 
         /// </summary>
-public FlyingVehicleObject FlyingVehicle{get { return _mFlyingVehicle; }}
-public ForestWindEmitterObject _mForestWindEmitter;
+public static FlyingVehicleObject FlyingVehicle{get { return _mFlyingVehicle; }}
+private static ForestWindEmitterObject _mForestWindEmitter;
         /// <summary>
         /// 
         /// </summary>
-public ForestWindEmitterObject ForestWindEmitter{get { return _mForestWindEmitter; }}
-public GameBaseObject _mGameBase;
+public static ForestWindEmitterObject ForestWindEmitter{get { return _mForestWindEmitter; }}
+private static GameBaseObject _mGameBase;
         /// <summary>
         /// 
         /// </summary>
-public GameBaseObject GameBase{get { return _mGameBase; }}
-public GameConnectionObject _mGameConnection;
+public static GameBaseObject GameBase{get { return _mGameBase; }}
+private static GameConnectionObject _mGameConnection;
         /// <summary>
         /// 
         /// </summary>
-public GameConnectionObject GameConnection{get { return _mGameConnection; }}
-public GroundPlaneObject _mGroundPlane;
+public static GameConnectionObject GameConnection{get { return _mGameConnection; }}
+private static GroundPlaneObject _mGroundPlane;
         /// <summary>
         /// 
         /// </summary>
-public GroundPlaneObject GroundPlane{get { return _mGroundPlane; }}
-public GuiAutoCompleteCtrlObject _mGuiAutoCompleteCtrl;
+public static GroundPlaneObject GroundPlane{get { return _mGroundPlane; }}
+private static GuiAutoCompleteCtrlObject _mGuiAutoCompleteCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiAutoCompleteCtrlObject GuiAutoCompleteCtrl{get { return _mGuiAutoCompleteCtrl; }}
-public GuiAutoScrollCtrlObject _mGuiAutoScrollCtrl;
+public static GuiAutoCompleteCtrlObject GuiAutoCompleteCtrl{get { return _mGuiAutoCompleteCtrl; }}
+private static GuiAutoScrollCtrlObject _mGuiAutoScrollCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiAutoScrollCtrlObject GuiAutoScrollCtrl{get { return _mGuiAutoScrollCtrl; }}
-public GuiBitmapButtonCtrlObject _mGuiBitmapButtonCtrl;
+public static GuiAutoScrollCtrlObject GuiAutoScrollCtrl{get { return _mGuiAutoScrollCtrl; }}
+private static GuiBitmapButtonCtrlObject _mGuiBitmapButtonCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiBitmapButtonCtrlObject GuiBitmapButtonCtrl{get { return _mGuiBitmapButtonCtrl; }}
-public GuiButtonBaseCtrlObject _mGuiButtonBaseCtrl;
+public static GuiBitmapButtonCtrlObject GuiBitmapButtonCtrl{get { return _mGuiBitmapButtonCtrl; }}
+private static GuiButtonBaseCtrlObject _mGuiButtonBaseCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiButtonBaseCtrlObject GuiButtonBaseCtrl{get { return _mGuiButtonBaseCtrl; }}
-public GuiCheckBoxCtrlObject _mGuiCheckBoxCtrl;
+public static GuiButtonBaseCtrlObject GuiButtonBaseCtrl{get { return _mGuiButtonBaseCtrl; }}
+private static GuiCheckBoxCtrlObject _mGuiCheckBoxCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiCheckBoxCtrlObject GuiCheckBoxCtrl{get { return _mGuiCheckBoxCtrl; }}
-public GuiChunkedBitmapCtrlObject _mGuiChunkedBitmapCtrl;
+public static GuiCheckBoxCtrlObject GuiCheckBoxCtrl{get { return _mGuiCheckBoxCtrl; }}
+private static GuiChunkedBitmapCtrlObject _mGuiChunkedBitmapCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiChunkedBitmapCtrlObject GuiChunkedBitmapCtrl{get { return _mGuiChunkedBitmapCtrl; }}
-public GuiClockHudObject _mGuiClockHud;
+public static GuiChunkedBitmapCtrlObject GuiChunkedBitmapCtrl{get { return _mGuiChunkedBitmapCtrl; }}
+private static GuiClockHudObject _mGuiClockHud;
         /// <summary>
         /// 
         /// </summary>
-public GuiClockHudObject GuiClockHud{get { return _mGuiClockHud; }}
-public GuiDirectoryFileListCtrlObject _mGuiDirectoryFileListCtrl;
+public static GuiClockHudObject GuiClockHud{get { return _mGuiClockHud; }}
+private static GuiDirectoryFileListCtrlObject _mGuiDirectoryFileListCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiDirectoryFileListCtrlObject GuiDirectoryFileListCtrl{get { return _mGuiDirectoryFileListCtrl; }}
-public GuiDragAndDropControlObject _mGuiDragAndDropControl;
+public static GuiDirectoryFileListCtrlObject GuiDirectoryFileListCtrl{get { return _mGuiDirectoryFileListCtrl; }}
+private static GuiDragAndDropControlObject _mGuiDragAndDropControl;
         /// <summary>
         /// 
         /// </summary>
-public GuiDragAndDropControlObject GuiDragAndDropControl{get { return _mGuiDragAndDropControl; }}
-public GuiDynamicCtrlArrayControlObject _mGuiDynamicCtrlArrayControl;
+public static GuiDragAndDropControlObject GuiDragAndDropControl{get { return _mGuiDragAndDropControl; }}
+private static GuiDynamicCtrlArrayControlObject _mGuiDynamicCtrlArrayControl;
         /// <summary>
         /// 
         /// </summary>
-public GuiDynamicCtrlArrayControlObject GuiDynamicCtrlArrayControl{get { return _mGuiDynamicCtrlArrayControl; }}
-public GuiFormCtrlObject _mGuiFormCtrl;
+public static GuiDynamicCtrlArrayControlObject GuiDynamicCtrlArrayControl{get { return _mGuiDynamicCtrlArrayControl; }}
+private static GuiFormCtrlObject _mGuiFormCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiFormCtrlObject GuiFormCtrl{get { return _mGuiFormCtrl; }}
-public GuiFrameSetCtrlObject _mGuiFrameSetCtrl;
+public static GuiFormCtrlObject GuiFormCtrl{get { return _mGuiFormCtrl; }}
+private static GuiFrameSetCtrlObject _mGuiFrameSetCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiFrameSetCtrlObject GuiFrameSetCtrl{get { return _mGuiFrameSetCtrl; }}
-public GuiGameListMenuCtrlObject _mGuiGameListMenuCtrl;
+public static GuiFrameSetCtrlObject GuiFrameSetCtrl{get { return _mGuiFrameSetCtrl; }}
+private static GuiGameListMenuCtrlObject _mGuiGameListMenuCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiGameListMenuCtrlObject GuiGameListMenuCtrl{get { return _mGuiGameListMenuCtrl; }}
-public GuiGameListOptionsCtrlObject _mGuiGameListOptionsCtrl;
+public static GuiGameListMenuCtrlObject GuiGameListMenuCtrl{get { return _mGuiGameListMenuCtrl; }}
+private static GuiGameListOptionsCtrlObject _mGuiGameListOptionsCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiGameListOptionsCtrlObject GuiGameListOptionsCtrl{get { return _mGuiGameListOptionsCtrl; }}
-public GuiGraphCtrlObject _mGuiGraphCtrl;
+public static GuiGameListOptionsCtrlObject GuiGameListOptionsCtrl{get { return _mGuiGameListOptionsCtrl; }}
+private static GuiGraphCtrlObject _mGuiGraphCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiGraphCtrlObject GuiGraphCtrl{get { return _mGuiGraphCtrl; }}
-public GuiIconButtonCtrlObject _mGuiIconButtonCtrl;
+public static GuiGraphCtrlObject GuiGraphCtrl{get { return _mGuiGraphCtrl; }}
+private static GuiIconButtonCtrlObject _mGuiIconButtonCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiIconButtonCtrlObject GuiIconButtonCtrl{get { return _mGuiIconButtonCtrl; }}
-public GuiImageListObject _mGuiImageList;
+public static GuiIconButtonCtrlObject GuiIconButtonCtrl{get { return _mGuiIconButtonCtrl; }}
+private static GuiImageListObject _mGuiImageList;
         /// <summary>
         /// 
         /// </summary>
-public GuiImageListObject GuiImageList{get { return _mGuiImageList; }}
-public GuiInspectorTypeBitMask32Object _mGuiInspectorTypeBitMask32;
+public static GuiImageListObject GuiImageList{get { return _mGuiImageList; }}
+private static GuiInspectorTypeBitMask32Object _mGuiInspectorTypeBitMask32;
         /// <summary>
         /// 
         /// </summary>
-public GuiInspectorTypeBitMask32Object GuiInspectorTypeBitMask32{get { return _mGuiInspectorTypeBitMask32; }}
-public GuiInspectorTypeFileNameObject _mGuiInspectorTypeFileName;
+public static GuiInspectorTypeBitMask32Object GuiInspectorTypeBitMask32{get { return _mGuiInspectorTypeBitMask32; }}
+private static GuiInspectorTypeFileNameObject _mGuiInspectorTypeFileName;
         /// <summary>
         /// 
         /// </summary>
-public GuiInspectorTypeFileNameObject GuiInspectorTypeFileName{get { return _mGuiInspectorTypeFileName; }}
-public GuiListBoxCtrlObject _mGuiListBoxCtrl;
+public static GuiInspectorTypeFileNameObject GuiInspectorTypeFileName{get { return _mGuiInspectorTypeFileName; }}
+private static GuiListBoxCtrlObject _mGuiListBoxCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiListBoxCtrlObject GuiListBoxCtrl{get { return _mGuiListBoxCtrl; }}
-public GuiMaterialPreviewObject _mGuiMaterialPreview;
+public static GuiListBoxCtrlObject GuiListBoxCtrl{get { return _mGuiListBoxCtrl; }}
+private static GuiMaterialPreviewObject _mGuiMaterialPreview;
         /// <summary>
         /// 
         /// </summary>
-public GuiMaterialPreviewObject GuiMaterialPreview{get { return _mGuiMaterialPreview; }}
-public GuiMenuBarObject _mGuiMenuBar;
+public static GuiMaterialPreviewObject GuiMaterialPreview{get { return _mGuiMaterialPreview; }}
+private static GuiMenuBarObject _mGuiMenuBar;
         /// <summary>
         /// 
         /// </summary>
-public GuiMenuBarObject GuiMenuBar{get { return _mGuiMenuBar; }}
-public GuiMessageVectorCtrlObject _mGuiMessageVectorCtrl;
+public static GuiMenuBarObject GuiMenuBar{get { return _mGuiMenuBar; }}
+private static GuiMessageVectorCtrlObject _mGuiMessageVectorCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiMessageVectorCtrlObject GuiMessageVectorCtrl{get { return _mGuiMessageVectorCtrl; }}
-public GuiMissionAreaCtrlObject _mGuiMissionAreaCtrl;
+public static GuiMessageVectorCtrlObject GuiMessageVectorCtrl{get { return _mGuiMessageVectorCtrl; }}
+private static GuiMissionAreaCtrlObject _mGuiMissionAreaCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiMissionAreaCtrlObject GuiMissionAreaCtrl{get { return _mGuiMissionAreaCtrl; }}
-public GuiMLTextCtrlObject _mGuiMLTextCtrl;
+public static GuiMissionAreaCtrlObject GuiMissionAreaCtrl{get { return _mGuiMissionAreaCtrl; }}
+private static GuiMLTextCtrlObject _mGuiMLTextCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiMLTextCtrlObject GuiMLTextCtrl{get { return _mGuiMLTextCtrl; }}
-public GuiObjectViewObject _mGuiObjectView;
+public static GuiMLTextCtrlObject GuiMLTextCtrl{get { return _mGuiMLTextCtrl; }}
+private static GuiObjectViewObject _mGuiObjectView;
         /// <summary>
         /// 
         /// </summary>
-public GuiObjectViewObject GuiObjectView{get { return _mGuiObjectView; }}
-public GuiPaneControlObject _mGuiPaneControl;
+public static GuiObjectViewObject GuiObjectView{get { return _mGuiObjectView; }}
+private static GuiPaneControlObject _mGuiPaneControl;
         /// <summary>
         /// 
         /// </summary>
-public GuiPaneControlObject GuiPaneControl{get { return _mGuiPaneControl; }}
-public GuiProgressBitmapCtrlObject _mGuiProgressBitmapCtrl;
+public static GuiPaneControlObject GuiPaneControl{get { return _mGuiPaneControl; }}
+private static GuiProgressBitmapCtrlObject _mGuiProgressBitmapCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiProgressBitmapCtrlObject GuiProgressBitmapCtrl{get { return _mGuiProgressBitmapCtrl; }}
-public GuiRolloutCtrlObject _mGuiRolloutCtrl;
+public static GuiProgressBitmapCtrlObject GuiProgressBitmapCtrl{get { return _mGuiProgressBitmapCtrl; }}
+private static GuiRolloutCtrlObject _mGuiRolloutCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiRolloutCtrlObject GuiRolloutCtrl{get { return _mGuiRolloutCtrl; }}
-public GuiScrollCtrlObject _mGuiScrollCtrl;
+public static GuiRolloutCtrlObject GuiRolloutCtrl{get { return _mGuiRolloutCtrl; }}
+private static GuiScrollCtrlObject _mGuiScrollCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiScrollCtrlObject GuiScrollCtrl{get { return _mGuiScrollCtrl; }}
-public GuiShapeEdPreviewObject _mGuiShapeEdPreview;
+public static GuiScrollCtrlObject GuiScrollCtrl{get { return _mGuiScrollCtrl; }}
+private static GuiShapeEdPreviewObject _mGuiShapeEdPreview;
         /// <summary>
         /// 
         /// </summary>
-public GuiShapeEdPreviewObject GuiShapeEdPreview{get { return _mGuiShapeEdPreview; }}
-public GuiSliderCtrlObject _mGuiSliderCtrl;
+public static GuiShapeEdPreviewObject GuiShapeEdPreview{get { return _mGuiShapeEdPreview; }}
+private static GuiSliderCtrlObject _mGuiSliderCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiSliderCtrlObject GuiSliderCtrl{get { return _mGuiSliderCtrl; }}
-public GuiStackControlObject _mGuiStackControl;
+public static GuiSliderCtrlObject GuiSliderCtrl{get { return _mGuiSliderCtrl; }}
+private static GuiStackControlObject _mGuiStackControl;
         /// <summary>
         /// 
         /// </summary>
-public GuiStackControlObject GuiStackControl{get { return _mGuiStackControl; }}
-public GuiSwatchButtonCtrlObject _mGuiSwatchButtonCtrl;
+public static GuiStackControlObject GuiStackControl{get { return _mGuiStackControl; }}
+private static GuiSwatchButtonCtrlObject _mGuiSwatchButtonCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiSwatchButtonCtrlObject GuiSwatchButtonCtrl{get { return _mGuiSwatchButtonCtrl; }}
-public GuiTabBookCtrlObject _mGuiTabBookCtrl;
+public static GuiSwatchButtonCtrlObject GuiSwatchButtonCtrl{get { return _mGuiSwatchButtonCtrl; }}
+private static GuiTabBookCtrlObject _mGuiTabBookCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiTabBookCtrlObject GuiTabBookCtrl{get { return _mGuiTabBookCtrl; }}
-public GuiTableControlObject _mGuiTableControl;
+public static GuiTabBookCtrlObject GuiTabBookCtrl{get { return _mGuiTabBookCtrl; }}
+private static GuiTableControlObject _mGuiTableControl;
         /// <summary>
         /// 
         /// </summary>
-public GuiTableControlObject GuiTableControl{get { return _mGuiTableControl; }}
-public GuiTabPageCtrlObject _mGuiTabPageCtrl;
+public static GuiTableControlObject GuiTableControl{get { return _mGuiTableControl; }}
+private static GuiTabPageCtrlObject _mGuiTabPageCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiTabPageCtrlObject GuiTabPageCtrl{get { return _mGuiTabPageCtrl; }}
-public GuiTextCtrlObject _mGuiTextCtrl;
+public static GuiTabPageCtrlObject GuiTabPageCtrl{get { return _mGuiTabPageCtrl; }}
+private static GuiTextCtrlObject _mGuiTextCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiTextCtrlObject GuiTextCtrl{get { return _mGuiTextCtrl; }}
-public GuiTextListCtrlObject _mGuiTextListCtrl;
+public static GuiTextCtrlObject GuiTextCtrl{get { return _mGuiTextCtrl; }}
+private static GuiTextListCtrlObject _mGuiTextListCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiTextListCtrlObject GuiTextListCtrl{get { return _mGuiTextListCtrl; }}
-public GuiTheoraCtrlObject _mGuiTheoraCtrl;
+public static GuiTextListCtrlObject GuiTextListCtrl{get { return _mGuiTextListCtrl; }}
+private static GuiTheoraCtrlObject _mGuiTheoraCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiTheoraCtrlObject GuiTheoraCtrl{get { return _mGuiTheoraCtrl; }}
-public GuiTSCtrlObject _mGuiTSCtrl;
+public static GuiTheoraCtrlObject GuiTheoraCtrl{get { return _mGuiTheoraCtrl; }}
+private static GuiTSCtrlObject _mGuiTSCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiTSCtrlObject GuiTSCtrl{get { return _mGuiTSCtrl; }}
-public GuiWindowCtrlObject _mGuiWindowCtrl;
+public static GuiTSCtrlObject GuiTSCtrl{get { return _mGuiTSCtrl; }}
+private static GuiWindowCtrlObject _mGuiWindowCtrl;
         /// <summary>
         /// 
         /// </summary>
-public GuiWindowCtrlObject GuiWindowCtrl{get { return _mGuiWindowCtrl; }}
-public HTTPObjectObject _mHTTPObject;
+public static GuiWindowCtrlObject GuiWindowCtrl{get { return _mGuiWindowCtrl; }}
+private static HTTPObjectObject _mHTTPObject;
         /// <summary>
         /// 
         /// </summary>
-public HTTPObjectObject HTTPObject{get { return _mHTTPObject; }}
-public ItemObject _mItem;
+public static HTTPObjectObject HTTPObject{get { return _mHTTPObject; }}
+private static ItemObject _mItem;
         /// <summary>
         /// 
         /// </summary>
-public ItemObject Item{get { return _mItem; }}
-public LevelInfoObject _mLevelInfo;
+public static ItemObject Item{get { return _mItem; }}
+private static LevelInfoObject _mLevelInfo;
         /// <summary>
         /// 
         /// </summary>
-public LevelInfoObject LevelInfo{get { return _mLevelInfo; }}
-public LightDescriptionObject _mLightDescription;
+public static LevelInfoObject LevelInfo{get { return _mLevelInfo; }}
+private static LightDescriptionObject _mLightDescription;
         /// <summary>
         /// 
         /// </summary>
-public LightDescriptionObject LightDescription{get { return _mLightDescription; }}
-public LightFlareDataObject _mLightFlareData;
+public static LightDescriptionObject LightDescription{get { return _mLightDescription; }}
+private static LightFlareDataObject _mLightFlareData;
         /// <summary>
         /// 
         /// </summary>
-public LightFlareDataObject LightFlareData{get { return _mLightFlareData; }}
-public LightningObject _mLightning;
+public static LightFlareDataObject LightFlareData{get { return _mLightFlareData; }}
+private static LightningObject _mLightning;
         /// <summary>
         /// 
         /// </summary>
-public LightningObject Lightning{get { return _mLightning; }}
-public MeshRoadObject _mMeshRoad;
+public static LightningObject Lightning{get { return _mLightning; }}
+private static MeshRoadObject _mMeshRoad;
         /// <summary>
         /// 
         /// </summary>
-public MeshRoadObject MeshRoad{get { return _mMeshRoad; }}
-public MissionAreaObject _mMissionArea;
+public static MeshRoadObject MeshRoad{get { return _mMeshRoad; }}
+private static MissionAreaObject _mMissionArea;
         /// <summary>
         /// 
         /// </summary>
-public MissionAreaObject MissionArea{get { return _mMissionArea; }}
-public NavMeshObject _mNavMesh;
+public static MissionAreaObject MissionArea{get { return _mMissionArea; }}
+private static NavMeshObject _mNavMesh;
         /// <summary>
         /// 
         /// </summary>
-public NavMeshObject NavMesh{get { return _mNavMesh; }}
-public NavPathObject _mNavPath;
+public static NavMeshObject NavMesh{get { return _mNavMesh; }}
+private static NavPathObject _mNavPath;
         /// <summary>
         /// 
         /// </summary>
-public NavPathObject NavPath{get { return _mNavPath; }}
-public NetConnectionObject _mNetConnection;
+public static NavPathObject NavPath{get { return _mNavPath; }}
+private static NetConnectionObject _mNetConnection;
         /// <summary>
         /// 
         /// </summary>
-public NetConnectionObject NetConnection{get { return _mNetConnection; }}
-public NetObjectObject _mNetObject;
+public static NetConnectionObject NetConnection{get { return _mNetConnection; }}
+private static NetObjectObject _mNetObject;
         /// <summary>
         /// 
         /// </summary>
-public NetObjectObject NetObject{get { return _mNetObject; }}
-public ParticleDataObject _mParticleData;
+public static NetObjectObject NetObject{get { return _mNetObject; }}
+private static ParticleDataObject _mParticleData;
         /// <summary>
         /// 
         /// </summary>
-public ParticleDataObject ParticleData{get { return _mParticleData; }}
-public ParticleEmitterDataObject _mParticleEmitterData;
+public static ParticleDataObject ParticleData{get { return _mParticleData; }}
+private static ParticleEmitterDataObject _mParticleEmitterData;
         /// <summary>
         /// 
         /// </summary>
-public ParticleEmitterDataObject ParticleEmitterData{get { return _mParticleEmitterData; }}
-public ParticleEmitterNodeObject _mParticleEmitterNode;
+public static ParticleEmitterDataObject ParticleEmitterData{get { return _mParticleEmitterData; }}
+private static ParticleEmitterNodeObject _mParticleEmitterNode;
         /// <summary>
         /// 
         /// </summary>
-public ParticleEmitterNodeObject ParticleEmitterNode{get { return _mParticleEmitterNode; }}
-public PathCameraObject _mPathCamera;
+public static ParticleEmitterNodeObject ParticleEmitterNode{get { return _mParticleEmitterNode; }}
+private static PathCameraObject _mPathCamera;
         /// <summary>
         /// 
         /// </summary>
-public PathCameraObject PathCamera{get { return _mPathCamera; }}
-public PhysicalZoneObject _mPhysicalZone;
+public static PathCameraObject PathCamera{get { return _mPathCamera; }}
+private static PhysicalZoneObject _mPhysicalZone;
         /// <summary>
         /// 
         /// </summary>
-public PhysicalZoneObject PhysicalZone{get { return _mPhysicalZone; }}
-public PhysicsForceObject _mPhysicsForce;
+public static PhysicalZoneObject PhysicalZone{get { return _mPhysicalZone; }}
+private static PhysicsForceObject _mPhysicsForce;
         /// <summary>
         /// 
         /// </summary>
-public PhysicsForceObject PhysicsForce{get { return _mPhysicsForce; }}
-public PhysicsShapeObject _mPhysicsShape;
+public static PhysicsForceObject PhysicsForce{get { return _mPhysicsForce; }}
+private static PhysicsShapeObject _mPhysicsShape;
         /// <summary>
         /// 
         /// </summary>
-public PhysicsShapeObject PhysicsShape{get { return _mPhysicsShape; }}
-public PlayerObject _mPlayer;
+public static PhysicsShapeObject PhysicsShape{get { return _mPhysicsShape; }}
+private static PlayerObject _mPlayer;
         /// <summary>
         /// 
         /// </summary>
-public PlayerObject Player{get { return _mPlayer; }}
-public PortalObject _mPortal;
+public static PlayerObject Player{get { return _mPlayer; }}
+private static PortalObject _mPortal;
         /// <summary>
         /// 
         /// </summary>
-public PortalObject Portal{get { return _mPortal; }}
-public PostEffectObject _mPostEffect;
+public static PortalObject Portal{get { return _mPortal; }}
+private static PostEffectObject _mPostEffect;
         /// <summary>
         /// 
         /// </summary>
-public PostEffectObject PostEffect{get { return _mPostEffect; }}
-public PrecipitationObject _mPrecipitation;
+public static PostEffectObject PostEffect{get { return _mPostEffect; }}
+private static PrecipitationObject _mPrecipitation;
         /// <summary>
         /// 
         /// </summary>
-public PrecipitationObject Precipitation{get { return _mPrecipitation; }}
-public ProjectileObject _mProjectile;
+public static PrecipitationObject Precipitation{get { return _mPrecipitation; }}
+private static ProjectileObject _mProjectile;
         /// <summary>
         /// 
         /// </summary>
-public ProjectileObject Projectile{get { return _mProjectile; }}
-public ProximityMineObject _mProximityMine;
+public static ProjectileObject Projectile{get { return _mProjectile; }}
+private static ProximityMineObject _mProximityMine;
         /// <summary>
         /// 
         /// </summary>
-public ProximityMineObject ProximityMine{get { return _mProximityMine; }}
-public RenderBinManagerObject _mRenderBinManager;
+public static ProximityMineObject ProximityMine{get { return _mProximityMine; }}
+private static RenderBinManagerObject _mRenderBinManager;
         /// <summary>
         /// 
         /// </summary>
-public RenderBinManagerObject RenderBinManager{get { return _mRenderBinManager; }}
-public RenderMeshExampleObject _mRenderMeshExample;
+public static RenderBinManagerObject RenderBinManager{get { return _mRenderBinManager; }}
+private static RenderMeshExampleObject _mRenderMeshExample;
         /// <summary>
         /// 
         /// </summary>
-public RenderMeshExampleObject RenderMeshExample{get { return _mRenderMeshExample; }}
-public RenderPassManagerObject _mRenderPassManager;
+public static RenderMeshExampleObject RenderMeshExample{get { return _mRenderMeshExample; }}
+private static RenderPassManagerObject _mRenderPassManager;
         /// <summary>
         /// 
         /// </summary>
-public RenderPassManagerObject RenderPassManager{get { return _mRenderPassManager; }}
-public RenderPassStateTokenObject _mRenderPassStateToken;
+public static RenderPassManagerObject RenderPassManager{get { return _mRenderPassManager; }}
+private static RenderPassStateTokenObject _mRenderPassStateToken;
         /// <summary>
         /// 
         /// </summary>
-public RenderPassStateTokenObject RenderPassStateToken{get { return _mRenderPassStateToken; }}
-public RigidShapeObject _mRigidShape;
+public static RenderPassStateTokenObject RenderPassStateToken{get { return _mRenderPassStateToken; }}
+private static RigidShapeObject _mRigidShape;
         /// <summary>
         /// 
         /// </summary>
-public RigidShapeObject RigidShape{get { return _mRigidShape; }}
-public RiverObject _mRiver;
+public static RigidShapeObject RigidShape{get { return _mRigidShape; }}
+private static RiverObject _mRiver;
         /// <summary>
         /// 
         /// </summary>
-public RiverObject River{get { return _mRiver; }}
-public ScatterSkyObject _mScatterSky;
+public static RiverObject River{get { return _mRiver; }}
+private static ScatterSkyObject _mScatterSky;
         /// <summary>
         /// 
         /// </summary>
-public ScatterSkyObject ScatterSky{get { return _mScatterSky; }}
-public SceneObjectObject _mSceneObject;
+public static ScatterSkyObject ScatterSky{get { return _mScatterSky; }}
+private static SceneObjectObject _mSceneObject;
         /// <summary>
         /// 
         /// </summary>
-public SceneObjectObject SceneObject{get { return _mSceneObject; }}
-public ScriptTickObjectObject _mScriptTickObject;
+public static SceneObjectObject SceneObject{get { return _mSceneObject; }}
+private static ScriptTickObjectObject _mScriptTickObject;
         /// <summary>
         /// 
         /// </summary>
-public ScriptTickObjectObject ScriptTickObject{get { return _mScriptTickObject; }}
-public SFXControllerObject _mSFXController;
+public static ScriptTickObjectObject ScriptTickObject{get { return _mScriptTickObject; }}
+private static SFXControllerObject _mSFXController;
         /// <summary>
         /// 
         /// </summary>
-public SFXControllerObject SFXController{get { return _mSFXController; }}
-public SFXEmitterObject _mSFXEmitter;
+public static SFXControllerObject SFXController{get { return _mSFXController; }}
+private static SFXEmitterObject _mSFXEmitter;
         /// <summary>
         /// 
         /// </summary>
-public SFXEmitterObject SFXEmitter{get { return _mSFXEmitter; }}
-public SFXParameterObject _mSFXParameter;
+public static SFXEmitterObject SFXEmitter{get { return _mSFXEmitter; }}
+private static SFXParameterObject _mSFXParameter;
         /// <summary>
         /// 
         /// </summary>
-public SFXParameterObject SFXParameter{get { return _mSFXParameter; }}
-public SFXProfileObject _mSFXProfile;
+public static SFXParameterObject SFXParameter{get { return _mSFXParameter; }}
+private static SFXProfileObject _mSFXProfile;
         /// <summary>
         /// 
         /// </summary>
-public SFXProfileObject SFXProfile{get { return _mSFXProfile; }}
-public SFXSoundObject _mSFXSound;
+public static SFXProfileObject SFXProfile{get { return _mSFXProfile; }}
+private static SFXSoundObject _mSFXSound;
         /// <summary>
         /// 
         /// </summary>
-public SFXSoundObject SFXSound{get { return _mSFXSound; }}
-public SFXStateObject _mSFXState;
+public static SFXSoundObject SFXSound{get { return _mSFXSound; }}
+private static SFXStateObject _mSFXState;
         /// <summary>
         /// 
         /// </summary>
-public SFXStateObject SFXState{get { return _mSFXState; }}
-public ShaderDataObject _mShaderData;
+public static SFXStateObject SFXState{get { return _mSFXState; }}
+private static ShaderDataObject _mShaderData;
         /// <summary>
         /// 
         /// </summary>
-public ShaderDataObject ShaderData{get { return _mShaderData; }}
-public ShapeBaseObject _mShapeBase;
+public static ShaderDataObject ShaderData{get { return _mShaderData; }}
+private static ShapeBaseObject _mShapeBase;
         /// <summary>
         /// 
         /// </summary>
-public ShapeBaseObject ShapeBase{get { return _mShapeBase; }}
-public ShapeBaseDataObject _mShapeBaseData;
+public static ShapeBaseObject ShapeBase{get { return _mShapeBase; }}
+private static ShapeBaseDataObject _mShapeBaseData;
         /// <summary>
         /// 
         /// </summary>
-public ShapeBaseDataObject ShapeBaseData{get { return _mShapeBaseData; }}
-public SimpleNetObjectObject _mSimpleNetObject;
+public static ShapeBaseDataObject ShapeBaseData{get { return _mShapeBaseData; }}
+private static SimpleNetObjectObject _mSimpleNetObject;
         /// <summary>
         /// 
         /// </summary>
-public SimpleNetObjectObject SimpleNetObject{get { return _mSimpleNetObject; }}
-public StreamObjectObject _mStreamObject;
+public static SimpleNetObjectObject SimpleNetObject{get { return _mSimpleNetObject; }}
+private static StreamObjectObject _mStreamObject;
         /// <summary>
         /// 
         /// </summary>
-public StreamObjectObject StreamObject{get { return _mStreamObject; }}
-public TCPObjectObject _mTCPObject;
+public static StreamObjectObject StreamObject{get { return _mStreamObject; }}
+private static TCPObjectObject _mTCPObject;
         /// <summary>
         /// 
         /// </summary>
-public TCPObjectObject TCPObject{get { return _mTCPObject; }}
-public TimeOfDayObject _mTimeOfDay;
+public static TCPObjectObject TCPObject{get { return _mTCPObject; }}
+private static TimeOfDayObject _mTimeOfDay;
         /// <summary>
         /// 
         /// </summary>
-public TimeOfDayObject TimeOfDay{get { return _mTimeOfDay; }}
-public TriggerObject _mTrigger;
+public static TimeOfDayObject TimeOfDay{get { return _mTimeOfDay; }}
+private static TriggerObject _mTrigger;
         /// <summary>
         /// 
         /// </summary>
-public TriggerObject Trigger{get { return _mTrigger; }}
-public TSAttachableObject _mTSAttachable;
+public static TriggerObject Trigger{get { return _mTrigger; }}
+private static TSAttachableObject _mTSAttachable;
         /// <summary>
         /// 
         /// </summary>
-public TSAttachableObject TSAttachable{get { return _mTSAttachable; }}
-public TSDynamicObject _mTSDynamic;
+public static TSAttachableObject TSAttachable{get { return _mTSAttachable; }}
+private static TSDynamicObject _mTSDynamic;
         /// <summary>
         /// 
         /// </summary>
-public TSDynamicObject TSDynamic{get { return _mTSDynamic; }}
-public TSPathShapeObject _mTSPathShape;
+public static TSDynamicObject TSDynamic{get { return _mTSDynamic; }}
+private static TSPathShapeObject _mTSPathShape;
         /// <summary>
         /// 
         /// </summary>
-public TSPathShapeObject TSPathShape{get { return _mTSPathShape; }}
-public TSShapeConstructorObject _mTSShapeConstructor;
+public static TSPathShapeObject TSPathShape{get { return _mTSPathShape; }}
+private static TSShapeConstructorObject _mTSShapeConstructor;
         /// <summary>
         /// 
         /// </summary>
-public TSShapeConstructorObject TSShapeConstructor{get { return _mTSShapeConstructor; }}
-public TSStaticObject _mTSStatic;
+public static TSShapeConstructorObject TSShapeConstructor{get { return _mTSShapeConstructor; }}
+private static TSStaticObject _mTSStatic;
         /// <summary>
         /// 
         /// </summary>
-public TSStaticObject TSStatic{get { return _mTSStatic; }}
-public TurretShapeObject _mTurretShape;
+public static TSStaticObject TSStatic{get { return _mTSStatic; }}
+private static TurretShapeObject _mTurretShape;
         /// <summary>
         /// 
         /// </summary>
-public TurretShapeObject TurretShape{get { return _mTurretShape; }}
-public VolumetricFogObject _mVolumetricFog;
+public static TurretShapeObject TurretShape{get { return _mTurretShape; }}
+private static VolumetricFogObject _mVolumetricFog;
         /// <summary>
         /// 
         /// </summary>
-public VolumetricFogObject VolumetricFog{get { return _mVolumetricFog; }}
-public WalkableShapeObject _mWalkableShape;
+public static VolumetricFogObject VolumetricFog{get { return _mVolumetricFog; }}
+private static WalkableShapeObject _mWalkableShape;
         /// <summary>
         /// 
         /// </summary>
-public WalkableShapeObject WalkableShape{get { return _mWalkableShape; }}
-public WheeledVehicleObject _mWheeledVehicle;
+public static WalkableShapeObject WalkableShape{get { return _mWalkableShape; }}
+private static WheeledVehicleObject _mWheeledVehicle;
         /// <summary>
         /// 
         /// </summary>
-public WheeledVehicleObject WheeledVehicle{get { return _mWheeledVehicle; }}
-public WorldEditorSelectionObject _mWorldEditorSelection;
+public static WheeledVehicleObject WheeledVehicle{get { return _mWheeledVehicle; }}
+private static WorldEditorSelectionObject _mWorldEditorSelection;
         /// <summary>
         /// 
         /// </summary>
-public WorldEditorSelectionObject WorldEditorSelection{get { return _mWorldEditorSelection; }}
-public ZipObjectObject _mZipObject;
+public static WorldEditorSelectionObject WorldEditorSelection{get { return _mWorldEditorSelection; }}
+private static ZipObjectObject _mZipObject;
         /// <summary>
         /// 
         /// </summary>
-public ZipObjectObject ZipObject{get { return _mZipObject; }}
-public ZoneObject _mZone;
+public static ZipObjectObject ZipObject{get { return _mZipObject; }}
+private static ZoneObject _mZone;
         /// <summary>
         /// 
         /// </summary>
-public ZoneObject Zone{get { return _mZone; }}
+public static ZoneObject Zone{get { return _mZone; }}
    /// <summary>
         /// 
         /// </summary>
  public class UtilObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public UtilObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// (aiConnect, S32 , 2, 20, (...)
 ///    @brief Creates a new AIConnection, and passes arguments to its onConnect script callback.
@@ -9345,12 +9314,6 @@ m_ts.fn_writeFontCache();
         /// </summary>
  public class ActionMapObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ActionMapObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( ActionMap, bind, bool, 5, 10, actionMap.bind( device, action, [modifier spec, mod...], command ) 
 /// 			  @hide)
@@ -9577,12 +9540,6 @@ return m_ts.fnActionMap_unbindObj(actionmap, device, action, obj);
         /// </summary>
  public class AIClientObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public AIClientObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ai.getAimLocation(); ) 
 /// 
@@ -9697,12 +9654,6 @@ m_ts.fn_AIClient_stop(aiclient);
         /// </summary>
  public class AIConnectionObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public AIConnectionObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// )
 /// 
@@ -9782,12 +9733,6 @@ m_ts.fn_AIConnection_setTrigger(aiconnection, idx, set);
         /// </summary>
  public class AIPlayerObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public AIPlayerObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( GameBase obj, [Point3F offset] )
 ///               Sets the bot's target object. Optionally set an offset from target location.
@@ -10087,12 +10032,6 @@ m_ts.fnAIPlayer_stop(aiplayer);
         /// </summary>
  public class AITurretShapeObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public AITurretShapeObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Activate a turret from a deactive state.)
 /// 
@@ -10275,12 +10214,6 @@ m_ts.fnAITurretShape_stopTrackingTarget(aiturretshape);
         /// </summary>
  public class ArrayObjectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ArrayObjectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 ///  ),
 ///    Adds a new element to the end of an array (same as push_back()).
@@ -10747,12 +10680,6 @@ m_ts.fnArrayObject_uniqueValue(arrayobject);
         /// </summary>
  public class CameraObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public CameraObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Move the camera to fully view the given radius.
 ///                    @note For this operation to take affect a valid edit orbit point must first be specified.  See Camera::setEditOrbitPoint().
@@ -11112,12 +11039,6 @@ m_ts.fnCamera_setVelocity(camera, velocity.AsString());
         /// </summary>
  public class CompoundUndoActionObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public CompoundUndoActionObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// addAction( UndoAction ) )
 /// 
@@ -11133,12 +11054,6 @@ m_ts.fn_CompoundUndoAction_addAction(compoundundoaction, objName);
         /// </summary>
  public class ConsoleLoggerObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ConsoleLoggerObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// () Attaches the logger to the console and begins writing to file
 /// 			  @tsexample
@@ -11191,12 +11106,6 @@ return m_ts.fn_ConsoleLogger_detach(consolelogger);
         /// </summary>
  public class CoverPointObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public CoverPointObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Returns true if someone is already using this cover point.)
 /// 
@@ -11212,12 +11121,6 @@ return m_ts.fnCoverPoint_isOccupied(coverpoint);
         /// </summary>
  public class CreatorTreeObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public CreatorTreeObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// (string group, string name, string value))
 /// 
@@ -11305,12 +11208,6 @@ return m_ts.fn_CreatorTree_isGroup(creatortree, group);
         /// </summary>
  public class CubemapDataObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public CubemapDataObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Returns the script filename of where the CubemapData object was 
 ///    defined.  This is used by the material editor. )
@@ -11336,12 +11233,6 @@ m_ts.fnCubemapData_updateFaces(cubemapdata);
         /// </summary>
  public class DbgFileViewObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public DbgFileViewObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ()
 ///               Clear all break points in the current file.)
@@ -11432,12 +11323,6 @@ m_ts.fn_DbgFileView_setCurrentLine(dbgfileview, line, selected);
         /// </summary>
  public class DebrisObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public DebrisObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// 1.0 1.0 1.0, 1.0 0.0 0.0), 
 ///    @brief Manually set this piece of debris at the given position with the given velocity.
@@ -11471,12 +11356,6 @@ return m_ts.fnDebris_init(debris, inputPosition, inputVelocity);
         /// </summary>
  public class DebugDrawerObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public DebugDrawerObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Draws an axis aligned box primitive within the two 3d points. )
 /// 
@@ -11539,12 +11418,6 @@ m_ts.fnDebugDrawer_toggleFreeze(debugdrawer);
         /// </summary>
  public class DecalDataObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public DecalDataObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Recompute the imagemap sub-texture rectangles for this DecalData.
 ///    @tsexample
@@ -11565,12 +11438,6 @@ m_ts.fnDecalData_postApply(decaldata);
         /// </summary>
  public class DecalRoadObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public DecalRoadObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Intended as a helper to developers and editor scripts.
 ///                    Force trigger an inspectPostApply. This will transmit 
@@ -11601,12 +11468,6 @@ m_ts.fnDecalRoad_regenerate(decalroad);
         /// </summary>
  public class DynamicConsoleMethodComponentObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public DynamicConsoleMethodComponentObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( DynamicConsoleMethodComponent, callMethod, void, 3, 64 , (methodName, argi) Calls script defined method
 /// 			  @param methodName The method's name as a string
@@ -11627,12 +11488,6 @@ m_ts.fnDynamicConsoleMethodComponent_callMethod(dynamicconsolemethodcomponent, a
         /// </summary>
  public class EditManagerObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public EditManagerObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Perform the onEditorDisabled callback on all SimObjects and set gEditingMission false )
 /// 
@@ -11684,12 +11539,6 @@ m_ts.fn_EditManager_setBookmark(editmanager, val);
         /// </summary>
  public class EditTSCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public EditTSCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 ///  )
 /// 
@@ -11795,12 +11644,6 @@ m_ts.fnEditTSCtrl_setOrthoFOV(edittsctrl, fov);
         /// </summary>
  public class EventManagerObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public EventManagerObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ()
 ///               Print all registered events to the console. )
@@ -11913,12 +11756,6 @@ m_ts.fn_EventManager_unregisterEvent(eventmanager, evt);
         /// </summary>
  public class FieldBrushObjectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public FieldBrushObjectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ), (simObject, [fieldList]) Copy selected static-fields for selected object./
 ///                                                         @param simObject Object to copy static-fields from.
@@ -11971,12 +11808,6 @@ return m_ts.fn_FieldBrushObject_queryGroups(fieldbrushobject, simObjName);
         /// </summary>
  public class FileDialogObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public FileDialogObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Launches the OS file browser
 /// 
@@ -12075,12 +11906,6 @@ return m_ts.fnFileDialog_Execute(filedialog);
         /// </summary>
  public class FileObjectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public FileObjectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ), FileObject.writeObject(SimObject, object prepend) 
 /// 			  @hide)
@@ -12306,12 +12131,6 @@ m_ts.fnFileObject_writeLine(fileobject, text);
         /// </summary>
  public class FileStreamObjectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public FileStreamObjectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Close the file. You can no longer read or write to it unless you open it again.
 ///    
@@ -12373,12 +12192,6 @@ return m_ts.fnFileStreamObject_open(filestreamobject, filename, openMode);
         /// </summary>
  public class FlyingVehicleObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public FlyingVehicleObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Set whether the vehicle should temporarily use the createHoverHeight 
 ///    specified in the datablock.This can help avoid problems with spawning.
@@ -12396,12 +12209,6 @@ m_ts.fnFlyingVehicle_useCreateHeight(flyingvehicle, enabled);
         /// </summary>
  public class ForestObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ForestObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// () )
 /// 
@@ -12463,12 +12270,6 @@ m_ts.fnForest_addItemWithTransform(forest, data, trans.AsString(), scale);
         /// </summary>
  public class ForestBrushObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ForestBrushObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( ForestItemData obj ) )
 /// 
@@ -12484,12 +12285,6 @@ return m_ts.fn_ForestBrush_containsItemData(forestbrush, obj);
         /// </summary>
  public class ForestBrushToolObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ForestBrushToolObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 ///  )
 /// 
@@ -12505,12 +12300,6 @@ m_ts.fn_ForestBrushTool_collectElements(forestbrushtool);
         /// </summary>
  public class ForestEditorCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ForestEditorCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( ForestItemData obj ) )
 /// 
@@ -12562,12 +12351,6 @@ m_ts.fn_ForestEditorCtrl_updateActiveForest(foresteditorctrl);
         /// </summary>
  public class ForestSelectionToolObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ForestSelectionToolObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 ///  )
 /// 
@@ -12628,12 +12411,6 @@ m_ts.fn_ForestSelectionTool_pasteSelection(forestselectiontool);
         /// </summary>
  public class ForestWindEmitterObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ForestWindEmitterObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Mounts the wind emitter to another scene object
 /// 
@@ -12657,12 +12434,6 @@ m_ts.fnForestWindEmitter_attachToObject(forestwindemitter, objectID);
         /// </summary>
  public class GameBaseObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GameBaseObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Apply an impulse to this object as defined by a world position and velocity vector.
 /// 
@@ -12722,12 +12493,6 @@ return m_ts.fnGameBase_setDataBlock(gamebase, data);
         /// </summary>
  public class GameConnectionObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GameConnectionObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Called by the server during phase 2 of the mission download to start sending ghosts to the client.
 ///    
@@ -13285,12 +13050,6 @@ m_ts.fnGameConnection_transmitDataBlocks(gameconnection, sequence);
         /// </summary>
  public class GroundPlaneObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GroundPlaneObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Intended as a helper to developers and editor scripts.
 ///                    Force trigger an inspectPostApply. This will transmit 
@@ -13309,12 +13068,6 @@ m_ts.fnGroundPlane_postApply(groundplane);
         /// </summary>
  public class GuiAutoCompleteCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiAutoCompleteCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( GuiAutoCompleteCtrl, add, void, 3, 5, (string name, int idNum, int scheme=0))
 /// 
@@ -13496,12 +13249,6 @@ m_ts.fnGuiAutoCompleteCtrl_sortID(guiautocompletectrl);
         /// </summary>
  public class GuiAutoScrollCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiAutoScrollCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Reset scrolling. )
 /// 
@@ -13517,12 +13264,6 @@ m_ts.fnGuiAutoScrollCtrl_reset(guiautoscrollctrl);
         /// </summary>
  public class GuiBitmapButtonCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiBitmapButtonCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Set the bitmap to show on the button.
 ///    @param path Path to the texture file in any of the supported formats. )
@@ -13539,12 +13280,6 @@ m_ts.fnGuiBitmapButtonCtrl_setBitmap(guibitmapbuttonctrl, path);
         /// </summary>
  public class GuiBitmapCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiBitmapCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( String filename | String filename, bool resize ) Assign an image to the control.
 ///    @hide )
@@ -13572,12 +13307,6 @@ m_ts.fnGuiBitmapCtrl_setValue(guibitmapctrl, x, y);
         /// </summary>
  public class GuiButtonBaseCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiButtonBaseCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Get the text display on the button's label (if any).
 ///    @return The button's label. )
@@ -13659,12 +13388,6 @@ m_ts.fnGuiButtonBaseCtrl_setTextID(guibuttonbasectrl, id);
         /// </summary>
  public class GuiCanvasObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiCanvasObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// () - Is this canvas currently fullscreen? )
 /// 
@@ -14198,12 +13921,6 @@ m_ts.fnGuiCanvas_toggleFullscreen(guicanvas);
         /// </summary>
  public class GuiCheckBoxCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiCheckBoxCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Test whether the checkbox is currently checked.
 ///    @return True if the checkbox is currently ticked, false otherwise. )
@@ -14232,12 +13949,6 @@ m_ts.fnGuiCheckBoxCtrl_setStateOn(guicheckboxctrl, newState);
         /// </summary>
  public class GuiChunkedBitmapCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiChunkedBitmapCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Set the image rendered in this control.
 ///    @param filename The image name you want to set
@@ -14257,12 +13968,6 @@ m_ts.fnGuiChunkedBitmapCtrl_setBitmap(guichunkedbitmapctrl, filename);
         /// </summary>
  public class GuiClockHudObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiClockHudObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Returns the current time, in seconds.
 /// 													@return timeInseconds Current time, in seconds
@@ -14314,12 +14019,6 @@ m_ts.fnGuiClockHud_setTime(guiclockhud, timeInSeconds);
         /// </summary>
  public class GuiColorPickerCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiColorPickerCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Gets the current position of the selector)
 /// 
@@ -14353,12 +14052,6 @@ m_ts.fn_GuiColorPickerCtrl_updateColor(guicolorpickerctrl);
         /// </summary>
  public class GuiControlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiControlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// )
 /// 
@@ -15140,12 +14833,6 @@ return m_ts.fnGuiControl_transparentControlCheck(guicontrol);
         /// </summary>
  public class GuiControlProfileObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiControlProfileObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( pString ) )
 /// 
@@ -15161,12 +14848,6 @@ return m_ts.fn_GuiControlProfile_getStringWidth(guicontrolprofile, pString);
         /// </summary>
  public class GuiConvexEditorCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiConvexEditorCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 ///  )
 /// 
@@ -15245,12 +14926,6 @@ m_ts.fn_GuiConvexEditorCtrl_splitSelectedFace(guiconvexeditorctrl);
         /// </summary>
  public class GuiDecalEditorCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiDecalEditorCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// deleteSelectedDecalDatablock( String datablock ) )
 /// 
@@ -15356,12 +15031,6 @@ m_ts.fn_GuiDecalEditorCtrl_setMode(guidecaleditorctrl, newMode);
         /// </summary>
  public class GuiDirectoryFileListCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiDirectoryFileListCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Get the currently selected filename.
 ///    @return The filename of the currently selected file )
@@ -15418,12 +15087,6 @@ return m_ts.fnGuiDirectoryFileListCtrl_setPath(guidirectoryfilelistctrl, path, f
         /// </summary>
  public class GuiDragAndDropControlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiDragAndDropControlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Start the drag operation.
 ///    @param x X coordinate for the mouse pointer offset which the drag control should position itself.
@@ -15441,12 +15104,6 @@ m_ts.fnGuiDragAndDropControl_startDragging(guidraganddropcontrol, x, y);
         /// </summary>
  public class GuiDynamicCtrlArrayControlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiDynamicCtrlArrayControlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Recalculates the position and size of this control and all its children. )
 /// 
@@ -15462,12 +15119,6 @@ m_ts.fnGuiDynamicCtrlArrayControl_refresh(guidynamicctrlarraycontrol);
         /// </summary>
  public class GuiEditCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiEditCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// (GuiControl ctrl))
 /// 
@@ -15746,12 +15397,6 @@ return m_ts.fnGuiEditCtrl_getTrash(guieditctrl);
         /// </summary>
  public class GuiFileTreeCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiFileTreeCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// getSelectedPath() - returns the currently selected path in the tree)
 /// 
@@ -15785,12 +15430,6 @@ return m_ts.fn_GuiFileTreeCtrl_setSelectedPath(guifiletreectrl, path);
         /// </summary>
  public class GuiFilterCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiFilterCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Return a tuple containing all the values in the filter.
 /// 			  @internal)
@@ -15828,12 +15467,6 @@ m_ts.fnGuiFilterCtrl_setValue(guifilterctrl, a2, a3, a4, a5, a6, a7, a8, a9, a10
         /// </summary>
  public class GuiFormCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiFormCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Get the ID of this form's menu.
 ///    @return The ID of the form menu )
@@ -15860,12 +15493,6 @@ m_ts.fnGuiFormCtrl_setCaption(guiformctrl, caption);
         /// </summary>
  public class GuiFrameSetCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiFrameSetCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Add a new column. )
 /// 
@@ -16044,12 +15671,6 @@ m_ts.fnGuiFrameSetCtrl_updateSizes(guiframesetctrl);
         /// </summary>
  public class GuiGameListMenuCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiGameListMenuCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Activates the current row. The script callback of  the current row will be called (if it has one). )
 /// 
@@ -16154,12 +15775,6 @@ m_ts.fnGuiGameListMenuCtrl_setSelected(guigamelistmenuctrl, row);
         /// </summary>
  public class GuiGameListOptionsCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiGameListOptionsCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Add a row to the list control.
 ///    @param label The text to display on the row as a label.
@@ -16216,12 +15831,6 @@ m_ts.fnGuiGameListOptionsCtrl_setOptions(guigamelistoptionsctrl, row, optionsLis
         /// </summary>
  public class GuiGradientCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiGradientCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Get color value)
 /// 
@@ -16246,12 +15855,6 @@ return m_ts.fn_GuiGradientCtrl_getColorCount(guigradientctrl);
         /// </summary>
  public class GuiGraphCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiGraphCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Sets up the given plotting curve to automatically plot the value of the @a variable with a 
 ///    frequency of @a updateFrequency.
@@ -16323,12 +15926,6 @@ m_ts.fnGuiGraphCtrl_setGraphType(guigraphctrl, plotId, (int)graphType );
         /// </summary>
  public class GuiIconButtonCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiIconButtonCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Set the bitmap to use for the button portion of this control.
 ///    @param buttonFilename Filename for the image
@@ -16353,12 +15950,6 @@ m_ts.fnGuiIconButtonCtrl_setBitmap(guiiconbuttonctrl, buttonFilename);
         /// </summary>
  public class GuiIdleCamFadeBitmapCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiIdleCamFadeBitmapCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ()
 /// 			  @internal)
@@ -16385,12 +15976,6 @@ m_ts.fn_GuiIdleCamFadeBitmapCtrl_fadeOut(guiidlecamfadebitmapctrl);
         /// </summary>
  public class GuiImageListObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiImageListObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Clears the imagelist
 ///    @tsexample
@@ -16499,12 +16084,6 @@ return m_ts.fnGuiImageList_remove(guiimagelist, index);
         /// </summary>
  public class GuiInspectorObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiInspectorObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( id object, (bool autoSync = true) ) - Add the object to the list of objects being inspected. )
 /// 
@@ -16592,12 +16171,6 @@ m_ts.fn_GuiInspector_setObjectField(guiinspector, fieldname, data);
         /// </summary>
  public class GuiInspectorDynamicFieldObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiInspectorDynamicFieldObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// field.renameField(newDynamicFieldName); )
 /// 
@@ -16613,12 +16186,6 @@ m_ts.fn_GuiInspectorDynamicField_renameField(guiinspectordynamicfield, newDynami
         /// </summary>
  public class GuiInspectorDynamicGroupObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiInspectorDynamicGroupObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// obj.addDynamicField(); )
 /// 
@@ -16652,12 +16219,6 @@ m_ts.fn_GuiInspectorDynamicGroup_removeDynamicField(guiinspectordynamicgroup);
         /// </summary>
  public class GuiInspectorFieldObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiInspectorFieldObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// , true), ( string newValue, bool callbacks=true ) - Set the field's value. Suppress callbacks for undo if callbacks=false. )
 /// 
@@ -16727,12 +16288,6 @@ m_ts.fn_GuiInspectorField_reset(guiinspectorfield);
         /// </summary>
  public class GuiInspectorTypeBitMask32Object
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiInspectorTypeBitMask32Object(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( GuiInspectorTypeBitMask32, applyBit, void, 2,2, apply(); )
 /// 
@@ -16748,12 +16303,6 @@ m_ts.fnGuiInspectorTypeBitMask32_applyBit(guiinspectortypebitmask32);
         /// </summary>
  public class GuiInspectorTypeFileNameObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiInspectorTypeFileNameObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( GuiInspectorTypeFileName, apply, void, 3,3, apply(newValue); )
 /// 
@@ -16769,12 +16318,6 @@ m_ts.fnGuiInspectorTypeFileName_apply(guiinspectortypefilename, a2);
         /// </summary>
  public class GuiListBoxCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiListBoxCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Checks if there is an item with the exact text of what is passed in, and if so
 ///    the item is removed from the list and adds that item's data to the filtered list.
@@ -17204,12 +16747,6 @@ m_ts.fnGuiListBoxCtrl_setSelected(guilistboxctrl, index, setSelected);
         /// </summary>
  public class GuiMaterialCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiMaterialCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( string materialName )
 ///                Set the material to be displayed in the control. )
@@ -17226,12 +16763,6 @@ return m_ts.fn_GuiMaterialCtrl_setMaterial(guimaterialctrl, materialName);
         /// </summary>
  public class GuiMaterialPreviewObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiMaterialPreviewObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Deletes the preview model.)
 /// 
@@ -17295,12 +16826,6 @@ m_ts.fnGuiMaterialPreview_setOrbitDistance(guimaterialpreview, distance);
         /// </summary>
  public class GuiMenuBarObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiMenuBarObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Adds a new menu to the menu bar.
 ///    @param menuText Text to display for the new menu item.
@@ -17750,12 +17275,6 @@ m_ts.fnGuiMenuBar_setSubmenuItemChecked(guimenubar, menuTarget, menuItemTarget, 
         /// </summary>
  public class GuiMeshRoadEditorCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiMeshRoadEditorCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// deleteNode() )
 /// 
@@ -17897,12 +17416,6 @@ m_ts.fn_GuiMeshRoadEditorCtrl_setSelectedRoad(guimeshroadeditorctrl, objName);
         /// </summary>
  public class GuiMessageVectorCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiMessageVectorCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Push a line onto the back of the list.
 /// 
@@ -17949,12 +17462,6 @@ m_ts.fnGuiMessageVectorCtrl_detach(guimessagevectorctrl);
         /// </summary>
  public class GuiMissionAreaCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiMissionAreaCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Set the MissionArea to edit.)
 /// 
@@ -17979,12 +17486,6 @@ m_ts.fnGuiMissionAreaCtrl_updateTerrain(guimissionareactrl);
         /// </summary>
  public class GuiMissionAreaEditorCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiMissionAreaEditorCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 ///  )
 /// 
@@ -18009,12 +17510,6 @@ m_ts.fn_GuiMissionAreaEditorCtrl_setSelectedMissionArea(guimissionareaeditorctrl
         /// </summary>
  public class GuiMLTextCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiMLTextCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Appends the text in the control with additional text. Also .
 ///    @param text New text to append to the existing text.
@@ -18172,12 +17667,6 @@ m_ts.fnGuiMLTextCtrl_setText(guimltextctrl, text);
         /// </summary>
  public class GuiNavEditorCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiNavEditorCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// )
 /// 
@@ -18274,12 +17763,6 @@ m_ts.fnGuiNavEditorCtrl_spawnPlayer(guinaveditorctrl);
         /// </summary>
  public class GuiObjectViewObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiObjectViewObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Return the current multiplier for camera zooming and rotation.
 ///    @tsexample
@@ -18572,12 +18055,6 @@ m_ts.fnGuiObjectView_setSkin(guiobjectview, skinName);
         /// </summary>
  public class GuiPaneControlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiPaneControlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Collapse or un-collapse the control.
 ///    @param collapse True to collapse the control, false to un-collapse it )
@@ -18594,12 +18071,6 @@ m_ts.fnGuiPaneControl_setCollapsed(guipanecontrol, collapse);
         /// </summary>
  public class GuiParticleGraphCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiParticleGraphCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// (int plotID, float x, float y, bool setAdded = true;)
 ///               Add a data point to the given plot.
@@ -18958,12 +18429,6 @@ m_ts.fn_GuiParticleGraphCtrl_setSelectedPoint(guiparticlegraphctrl, point);
         /// </summary>
  public class GuiPopUpMenuCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiPopUpMenuCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// , -1, 0), (string name, int idNum, int scheme=0))
 /// 
@@ -19145,12 +18610,6 @@ m_ts.fn_GuiPopUpMenuCtrl_sortID(guipopupmenuctrl);
         /// </summary>
  public class GuiPopUpMenuCtrlExObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiPopUpMenuCtrlExObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// , -1, 0), (string name, int idNum, int scheme=0))
 /// 
@@ -19382,12 +18841,6 @@ m_ts.fnGuiPopUpMenuCtrlEx_sortID(guipopupmenuctrlex);
         /// </summary>
  public class GuiProgressBitmapCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiProgressBitmapCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Set the bitmap to use for rendering the progress bar.
 ///    @param filename ~Path to the bitmap file.
@@ -19406,12 +18859,6 @@ m_ts.fnGuiProgressBitmapCtrl_setBitmap(guiprogressbitmapctrl, filename);
         /// </summary>
  public class GuiRiverEditorCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiRiverEditorCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// deleteNode() )
 /// 
@@ -19544,12 +18991,6 @@ m_ts.fn_GuiRiverEditorCtrl_setSelectedRiver(guirivereditorctrl, objName);
         /// </summary>
  public class GuiRoadEditorCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiRoadEditorCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// deleteNode() )
 /// 
@@ -19655,12 +19096,6 @@ m_ts.fn_GuiRoadEditorCtrl_setSelectedRoad(guiroadeditorctrl, pathRoad);
         /// </summary>
  public class GuiRolloutCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiRolloutCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Collapse the rollout if it is currently expanded.  This will make the rollout's child control invisible.
 ///    @note The rollout will animate to collapsed state.  To instantly collapse without animation, use instantCollapse(). )
@@ -19747,12 +19182,6 @@ m_ts.fnGuiRolloutCtrl_toggleExpanded(guirolloutctrl, instantly);
         /// </summary>
  public class GuiScrollCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiScrollCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Refresh sizing and positioning of child controls. )
 /// 
@@ -19837,12 +19266,6 @@ m_ts.fnGuiScrollCtrl_setScrollPosition(guiscrollctrl, x, y);
         /// </summary>
  public class GuiShapeEdPreviewObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiShapeEdPreviewObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Add a new thread (initially without any sequence set) )
 /// 
@@ -20125,12 +19548,6 @@ m_ts.fnGuiShapeEdPreview_updateNodeTransforms(guishapeedpreview);
         /// </summary>
  public class GuiSliderCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiSliderCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Get the current value of the slider based on the position of the thumb.
 ///    @return Slider position (from range.x to range.y). )
@@ -20169,12 +19586,6 @@ m_ts.fnGuiSliderCtrl_setValue(guisliderctrl, pos, doCallback);
         /// </summary>
  public class GuiStackControlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiStackControlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Prevents control from restacking - useful when adding or removing child controls
 ///    @param freeze True to freeze the control, false to unfreeze it
@@ -20214,12 +19625,6 @@ m_ts.fnGuiStackControl_updateStack(guistackcontrol);
         /// </summary>
  public class GuiSwatchButtonCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiSwatchButtonCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Set the color of the swatch control.
 ///    @param newColor The new color string given to the swatch control in float format \"r g b a\".
@@ -20238,12 +19643,6 @@ m_ts.fnGuiSwatchButtonCtrl_setColor(guiswatchbuttonctrl, newColor);
         /// </summary>
  public class GuiTabBookCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiTabBookCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 ///  ),
 ///    Add a new tab page to the control.
@@ -20281,12 +19680,6 @@ m_ts.fnGuiTabBookCtrl_selectPage(guitabbookctrl, index);
         /// </summary>
  public class GuiTableControlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiTableControlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// )
 /// 
@@ -20369,12 +19762,6 @@ m_ts.fnGuiTableControl_setSelectedRow(guitablecontrol, rowNum);
         /// </summary>
  public class GuiTabPageCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiTabPageCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Select this page in its tab book. )
 /// 
@@ -20390,12 +19777,6 @@ m_ts.fnGuiTabPageCtrl_select(guitabpagectrl);
         /// </summary>
  public class GuiTerrPreviewCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiTerrPreviewCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Return a Point2F containing the position of the origin.)
 /// 
@@ -20467,12 +19848,6 @@ m_ts.fn_GuiTerrPreviewCtrl_setValue(guiterrpreviewctrl, tuple);
         /// </summary>
  public class GuiTextCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiTextCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Sets the text in the control.
 ///    @param text Text to display in the control.
@@ -20512,12 +19887,6 @@ m_ts.fnGuiTextCtrl_setTextID(guitextctrl, textID);
         /// </summary>
  public class GuiTextEditCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiTextEditCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// textEditCtrl.selectText( %startBlock, %endBlock ) )
 /// 
@@ -20654,12 +20023,6 @@ m_ts.fnGuiTextEditCtrl_setText(guitexteditctrl, text);
         /// </summary>
  public class GuiTextListCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiTextListCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ,-1),
 ///    @brief Adds a new row at end of the list with the defined id and text.
@@ -21045,12 +20408,6 @@ m_ts.fnGuiTextListCtrl_sortNumerical(guitextlistctrl, columnID, increasing);
         /// </summary>
  public class GuiTheoraCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiTheoraCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Get the current playback time.
 ///    @return The elapsed playback time in seconds. )
@@ -21117,12 +20474,6 @@ m_ts.fnGuiTheoraCtrl_stop(guitheoractrl);
         /// </summary>
  public class GuiTickCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiTickCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( [tick = true] ) - This will set this object to either be processing ticks or not )
 /// 
@@ -21138,12 +20489,6 @@ m_ts.fn_GuiTickCtrl_setProcessTicks(guitickctrl, tick);
         /// </summary>
  public class GuiToolboxButtonCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiToolboxButtonCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( filepath name ) sets the bitmap that shows when the button is disabled)
 /// 
@@ -21177,12 +20522,6 @@ m_ts.fn_GuiToolboxButtonCtrl_setNormalBitmap(guitoolboxbuttonctrl, name);
         /// </summary>
  public class GuiTreeViewCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiTreeViewCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// addChildSelectionByValue(TreeItemId parent, value))
 /// 
@@ -21728,12 +21067,6 @@ m_ts.fnGuiTreeViewCtrl_toggleLockSelection(guitreeviewctrl);
         /// </summary>
  public class GuiTSCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiTSCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Given the camera's current FOV, get the distance from the camera's viewpoint at which the given radius will fit in the render area.
 ///    @param radius Radius in world-space units which should fit in the view.
@@ -21802,12 +21135,6 @@ return new Point3F ( m_ts.fnGuiTSCtrl_unproject(guitsctrl, screenPosition.AsStri
         /// </summary>
  public class GuiVariableInspectorObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiVariableInspectorObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// loadVars( searchString ) )
 /// 
@@ -21823,12 +21150,6 @@ m_ts.fn_GuiVariableInspector_loadVars(guivariableinspector, searchString);
         /// </summary>
  public class GuiWindowCtrlObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public GuiWindowCtrlObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 ///  )
 /// 
@@ -21925,12 +21246,6 @@ m_ts.fnGuiWindowCtrl_toggleCollapseGroup(guiwindowctrl);
         /// </summary>
  public class HTTPObjectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public HTTPObjectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 ///  ),
 ///    @brief Send a GET command to a server to send or retrieve data.
@@ -21998,12 +21313,6 @@ m_ts.fnHTTPObject_post(httpobject, Address, requirstURI, query, post);
         /// </summary>
  public class ItemObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ItemObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Get the normal of the surface on which the object is stuck.   
 ///    @return Returns The XYZ normal from where this Item is stuck.
@@ -22113,12 +21422,6 @@ return m_ts.fnItem_setCollisionTimeout(item, ignoreColObj);
         /// </summary>
  public class LangTableObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public LangTableObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// , ), 
 /// 			  (string filename, [string languageName])
@@ -22210,12 +21513,6 @@ m_ts.fn_LangTable_setDefaultLanguage(langtable, langId);
         /// </summary>
  public class LevelInfoObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public LevelInfoObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( LevelInfo, setNearClip, void, 3, 3, ( F32 nearClip ))
 /// 
@@ -22231,12 +21528,6 @@ m_ts.fnLevelInfo_setNearClip(levelinfo, a2);
         /// </summary>
  public class LightBaseObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public LightBaseObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Stops the light animation. )
 /// 
@@ -22284,12 +21575,6 @@ m_ts.fnLightBase_setLightEnabled(lightbase, state);
         /// </summary>
  public class LightDescriptionObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public LightDescriptionObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Force an inspectPostApply call for the benefit of tweaking via the console
 ///    
@@ -22319,12 +21604,6 @@ m_ts.fnLightDescription_apply(lightdescription);
         /// </summary>
  public class LightFlareDataObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public LightFlareDataObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Intended as a helper to developers and editor scripts.
 ///                    Force trigger an inspectPostApply
@@ -22342,12 +21621,6 @@ m_ts.fnLightFlareData_apply(lightflaredata);
         /// </summary>
  public class LightningObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public LightningObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Creates a LightningStrikeEvent which strikes a specific object.
 ///    @note This method is currently unimplemented. )
@@ -22393,12 +21666,6 @@ m_ts.fnLightning_warningFlashes(lightning);
         /// </summary>
  public class MaterialObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public MaterialObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Dumps a formatted list of the currently allocated material instances for this material to the console. )
 /// 
@@ -22468,12 +21735,6 @@ m_ts.fn_Material_setAutoGenerated(material, isAutoGenerated);
         /// </summary>
  public class MECreateUndoActionObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public MECreateUndoActionObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( SimObject obj ))
 /// 
@@ -22489,12 +21750,6 @@ m_ts.fn_MECreateUndoAction_addObject(mecreateundoaction, obj);
         /// </summary>
  public class MEDeleteUndoActionObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public MEDeleteUndoActionObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( SimObject obj ))
 /// 
@@ -22510,12 +21765,6 @@ m_ts.fn_MEDeleteUndoAction_deleteObject(medeleteundoaction, obj);
         /// </summary>
  public class MenuBarObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public MenuBarObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// (GuiCanvas, pos))
 /// 
@@ -22549,12 +21798,6 @@ m_ts.fn_MenuBar_removeFromCanvas(menubar);
         /// </summary>
  public class MeshRoadObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public MeshRoadObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Intended as a helper to developers and editor scripts.
 ///                    Force trigger an inspectPostApply. This will transmit 
@@ -22595,12 +21838,6 @@ m_ts.fnMeshRoad_setNodeDepth(meshroad, idx, meters);
         /// </summary>
  public class MessageObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public MessageObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// () Increment the reference count for this message)
 /// 
@@ -22634,12 +21871,6 @@ return m_ts.fn_Message_getType(message);
         /// </summary>
  public class MessageVectorObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public MessageVectorObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ), (string filename, string header=NULL)
 ///               Dump the message vector to a file, optionally prefixing a header.
@@ -22839,12 +22070,6 @@ m_ts.fnMessageVector_pushFrontLine(messagevector, msg, tag);
         /// </summary>
  public class MissionAreaObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public MissionAreaObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Returns 4 fields: starting x, starting y, extents x, extents y.)
 /// 
@@ -22887,12 +22112,6 @@ m_ts.fnMissionArea_setArea(missionarea, x, y, width, height);
         /// </summary>
  public class NavMeshObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public NavMeshObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Add a link to this NavMesh between two points.
 ///    )
@@ -23053,12 +22272,6 @@ m_ts.fnNavMesh_setLinkFlags(navmesh, id, flags);
         /// </summary>
  public class NavPathObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public NavPathObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Get a specified node along the path.)
 /// 
@@ -23128,12 +22341,6 @@ return m_ts.fnNavPath_size(navpath);
         /// </summary>
  public class NetConnectionObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public NetConnectionObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Ensures that all configured packet rates and sizes meet minimum requirements.
 /// 
@@ -23410,12 +22617,6 @@ m_ts.fnNetConnection_transmitPaths(netconnection);
         /// </summary>
  public class NetObjectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public NetObjectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Undo the effects of a scopeToClient() call.
 /// 
@@ -23558,12 +22759,6 @@ m_ts.fnNetObject_setScopeAlways(netobject);
         /// </summary>
  public class ParticleDataObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ParticleDataObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Reloads this particle.
 ///    @tsexample
@@ -23587,12 +22782,6 @@ m_ts.fnParticleData_reload(particledata);
         /// </summary>
  public class ParticleEmitterDataObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ParticleEmitterDataObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Reloads the ParticleData datablocks and other fields used by this emitter.
 ///    @tsexample
@@ -23616,12 +22805,6 @@ m_ts.fnParticleEmitterData_reload(particleemitterdata);
         /// </summary>
  public class ParticleEmitterNodeObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ParticleEmitterNodeObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Turns the emitter on or off.
 ///    @param active New emitter state )
@@ -23653,12 +22836,6 @@ m_ts.fnParticleEmitterNode_setEmitterDataBlock(particleemitternode, emitterDatab
         /// </summary>
  public class PathCameraObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public PathCameraObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Removes the knot at the front of the camera's path.
 /// 													@tsexample
@@ -23804,12 +22981,6 @@ m_ts.fnPathCamera_setTarget(pathcamera, position);
         /// </summary>
  public class PersistenceManagerObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public PersistenceManagerObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ()
 ///               Clears all the tracked objects without saving them. )
@@ -23947,12 +23118,6 @@ m_ts.fn_PersistenceManager_setDirty(persistencemanager, objName, fileName);
         /// </summary>
  public class PhysicalZoneObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public PhysicalZoneObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Activate the physical zone's effects.
 /// 													@tsexample
@@ -23989,12 +23154,6 @@ m_ts.fnPhysicalZone_deactivate(physicalzone);
         /// </summary>
  public class PhysicsDebrisDataObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public PhysicsDebrisDataObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Loads some information to have readily available at simulation time.
 ///    Forces generation of shaders, materials, and other data used by the %PhysicsDebris object. 
@@ -24013,12 +23172,6 @@ m_ts.fn_PhysicsDebrisData_preload(physicsdebrisdata);
         /// </summary>
  public class PhysicsForceObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public PhysicsForceObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Attempts to associate the PhysicsForce with a PhysicsBody.
 ///    Performs a physics ray cast of the provided length and direction. The %PhysicsForce  
@@ -24063,12 +23216,6 @@ return m_ts.fnPhysicsForce_isAttached(physicsforce);
         /// </summary>
  public class PhysicsShapeObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public PhysicsShapeObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Disables rendering and physical simulation.
 ///    Calling destroy() will also spawn any explosions, debris, and/or destroyedShape 
@@ -24109,12 +23256,6 @@ m_ts.fnPhysicsShape_restore(physicsshape);
         /// </summary>
  public class PlayerObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public PlayerObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Allow all poses a chance to occur.
 ///    This method resets any poses that have manually been blocked from occuring.  
@@ -24485,12 +23626,6 @@ return m_ts.fnPlayer_setControlObject(player, obj);
         /// </summary>
  public class PopupMenuObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public PopupMenuObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// (GuiCanvas, pos, title))
 /// 
@@ -24605,12 +23740,6 @@ m_ts.fn_PopupMenu_showPopup(popupmenu, canvasName, x, y);
         /// </summary>
  public class PortalObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public PortalObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Test whether the portal connects interior zones to the outdoor zone.
 ///    @return True if the portal is an exterior portal. )
@@ -24637,12 +23766,6 @@ return m_ts.fnPortal_isInteriorPortal(portal);
         /// </summary>
  public class PostEffectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public PostEffectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Remove all shader macros. )
 /// 
@@ -24794,12 +23917,6 @@ return m_ts.fnPostEffect_toggle(posteffect);
         /// </summary>
  public class PrecipitationObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public PrecipitationObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Smoothly change the maximum number of drops in the effect (from current 
 ///    value to #numDrops * @a percentage).
@@ -24864,12 +23981,6 @@ m_ts.fnPrecipitation_setTurbulence(precipitation, max, speed, seconds);
         /// </summary>
  public class ProjectileObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ProjectileObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Updates the projectile's positional and collision information.
 ///                                        This function will first delete the projectile if it is a server object and is outside it's ProjectileData::lifetime. 
@@ -24896,12 +24007,6 @@ m_ts.fnProjectile_presimulate(projectile, seconds);
         /// </summary>
  public class ProximityMineObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ProximityMineObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Manually cause the mine to explode.)
 /// 
@@ -24917,12 +24022,6 @@ m_ts.fnProximityMine_explode(proximitymine);
         /// </summary>
  public class ReadXMLObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ReadXMLObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// readXMLObj.readFile();)
 /// 
@@ -24938,12 +24037,6 @@ return m_ts.fn_ReadXML_readFile(readxml);
         /// </summary>
  public class RenderBinManagerObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public RenderBinManagerObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Returns the bin type string. )
 /// 
@@ -24959,12 +24052,6 @@ return m_ts.fnRenderBinManager_getBinType(renderbinmanager);
         /// </summary>
  public class RenderMeshExampleObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public RenderMeshExampleObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// A utility method for forcing a network update.)
 /// 
@@ -24980,12 +24067,6 @@ m_ts.fnRenderMeshExample_postApply(rendermeshexample);
         /// </summary>
  public class RenderPassManagerObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public RenderPassManagerObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Add as a render bin manager to the pass. )
 /// 
@@ -25028,12 +24109,6 @@ m_ts.fnRenderPassManager_removeManager(renderpassmanager, renderBin);
         /// </summary>
  public class RenderPassStateTokenObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public RenderPassStateTokenObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Disables the token.)
 /// 
@@ -25067,12 +24142,6 @@ m_ts.fnRenderPassStateToken_toggle(renderpassstatetoken);
         /// </summary>
  public class RigidShapeObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public RigidShapeObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Forces the client to jump to the RigidShape's transform rather then warp to it.)
 /// 
@@ -25119,12 +24188,6 @@ m_ts.fnRigidShape_reset(rigidshape);
         /// </summary>
  public class RiverObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public RiverObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Intended as a helper to developers and editor scripts.
 ///                    Force River to recreate its geometry.
@@ -25186,12 +24249,6 @@ m_ts.fnRiver_setNodeDepth(river, idx, meters);
         /// </summary>
  public class ScatterSkyObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ScatterSkyObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Apply a full network update of all fields to all clients.
 ///                   )
@@ -25208,12 +24265,6 @@ m_ts.fnScatterSky_applyChanges(scattersky);
         /// </summary>
  public class SceneObjectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SceneObjectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Get Euler rotation of this object.
 ///    @return the orientation of the object in the form of rotations around the 
@@ -25546,12 +24597,6 @@ return m_ts.fnSceneObject_unmountObject(sceneobject, target);
         /// </summary>
  public class ScriptTickObjectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ScriptTickObjectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Is this object wanting to receive tick notifications.
 /// 
@@ -25582,12 +24627,6 @@ m_ts.fnScriptTickObject_setProcessTicks(scripttickobject, tick);
         /// </summary>
  public class SettingsObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SettingsObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// settingObj.beginGroup(groupName, fromStart = false);)
 /// 
@@ -25702,12 +24741,6 @@ return m_ts.fnSettings_write(settings);
         /// </summary>
  public class SFXControllerObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SFXControllerObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Get the index of the playlist slot currently processed by the controller.
 ///    @return The slot index currently being played.
@@ -25735,12 +24768,6 @@ m_ts.fnSFXController_setCurrentSlot(sfxcontroller, index);
         /// </summary>
  public class SFXEmitterObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SFXEmitterObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Get the sound source object from the emitter.
 ///    @return The sound source used by the emitter or null.
@@ -25779,12 +24806,6 @@ m_ts.fnSFXEmitter_stop(sfxemitter);
         /// </summary>
  public class SFXParameterObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SFXParameterObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Get the name of the parameter.
 ///    @return The paramete name. )
@@ -25811,12 +24832,6 @@ m_ts.fnSFXParameter_reset(sfxparameter);
         /// </summary>
  public class SFXProfileObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SFXProfileObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Return the length of the sound data in seconds.
 ///    @return The length of the sound data in seconds or 0 if the sound referenced by the profile could not be found. )
@@ -25833,12 +24848,6 @@ return m_ts.fnSFXProfile_getSoundDuration(sfxprofile);
         /// </summary>
  public class SFXSoundObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SFXSoundObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Get the total play time (in seconds) of the sound data attached to the sound.
 ///    @return 
@@ -25891,12 +24900,6 @@ m_ts.fnSFXSound_setPosition(sfxsound, position);
         /// </summary>
  public class SFXSourceObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SFXSourceObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 ///  ),
 ///    ( vector position [, vector direction ] ) 
@@ -26220,12 +25223,6 @@ m_ts.fnSFXSource_stop(sfxsource, fadeOutTime);
         /// </summary>
  public class SFXStateObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SFXStateObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Increase the activation count on the state.
 ///    If the state isn't already active and it is not disabled, the state will be activated.
@@ -26303,12 +25300,6 @@ return m_ts.fnSFXState_isDisabled(sfxstate);
         /// </summary>
  public class ShaderDataObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ShaderDataObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Rebuilds all the vertex and pixel shader instances created from this ShaderData.
 /// 
@@ -26329,12 +25320,6 @@ m_ts.fnShaderData_reload(shaderdata);
         /// </summary>
  public class ShapeBaseObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ShapeBaseObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Increment the current damage level by the specified amount.
 /// 
@@ -27629,12 +26614,6 @@ return m_ts.fnShapeBase_unmountImage(shapebase, slot);
         /// </summary>
  public class ShapeBaseDataObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ShapeBaseDataObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Check if there is the space at the given transform is free to spawn into.
 /// 
@@ -27671,12 +26650,6 @@ return new TransformF ( m_ts.fnShapeBaseData_getDeployTransform(shapebasedata, p
         /// </summary>
  public class SimComponentObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SimComponentObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// (idx) Get the component corresponding to the given index.
 /// 			  @param idx An integer index value corresponding to the desired component.
@@ -27770,12 +26743,6 @@ return m_ts.fnSimComponent_removeComponents(simcomponent, a2, a3, a4, a5, a6, a7
         /// </summary>
  public class SimDataBlockObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SimDataBlockObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Reload the datablock.  This can only be used with a local client configuration. )
 /// 
@@ -27791,12 +26758,6 @@ m_ts.fn_SimDataBlock_reloadOnLocalClient(simdatablock);
         /// </summary>
  public class SimObjectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SimObjectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Copy fields from another object onto this one.  The objects must 
 ///    be of same type. Everything from the object will overwrite what's 
@@ -28414,12 +27375,6 @@ m_ts.fnSimObject_signal(simobject, a2, a3);
         /// </summary>
  public class SimPersistSetObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SimPersistSetObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// () - Try to bind unresolved persistent IDs in the set. )
 /// 
@@ -28435,12 +27390,6 @@ m_ts.fn_SimPersistSet_resolvePersistentIds(simpersistset);
         /// </summary>
  public class SimpleNetObjectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SimpleNetObjectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Sets the internal message variable.
 /// 
@@ -28480,12 +27429,6 @@ m_ts.fnSimpleNetObject_setMessage(simplenetobject, msg);
         /// </summary>
  public class SimResponseCurveObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SimResponseCurveObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// addPoint( F32 value, F32 time ) )
 /// 
@@ -28519,12 +27462,6 @@ return m_ts.fn_SimResponseCurve_getValue(simresponsecurve, time);
         /// </summary>
  public class SimSetObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SimSetObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// () Delete all objects in the set. )
 /// 
@@ -28735,12 +27672,6 @@ m_ts.fnSimSet_reorderChild(simset, child1, child2);
         /// </summary>
  public class SimXMLDocumentObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SimXMLDocumentObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// (string attributeName)
 ///    @brief Get float attribute from the current Element on the stack.
@@ -29290,12 +28221,6 @@ m_ts.fnSimXMLDocument_setObjectAttributes(simxmldocument, objectID);
         /// </summary>
  public class SkyBoxObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SkyBoxObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// )
 /// 
@@ -29311,12 +28236,6 @@ m_ts.fn_SkyBox_postApply(skybox);
         /// </summary>
  public class SpawnSphereObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SpawnSphereObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ([string additionalProps]) Spawns the object based on the SpawnSphere's 
 ///    class, datablock, properties, and script settings. Allows you to pass in 
@@ -29335,12 +28254,6 @@ return m_ts.fn_SpawnSphere_spawnObject(spawnsphere, additionalProps);
         /// </summary>
  public class StaticShapeObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public StaticShapeObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @internal)
 /// 
@@ -29366,12 +28279,6 @@ m_ts.fn_StaticShape_setPoweredState(staticshape, isPowered);
         /// </summary>
  public class StreamObjectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public StreamObjectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Copy from another StreamObject into this StreamObject
 ///    @param other The StreamObject to copy from.
@@ -29738,12 +28645,6 @@ m_ts.fnStreamObject_writeString(streamobject, stringx, maxLength);
         /// </summary>
  public class SunObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public SunObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// animate( F32 duration, F32 startAzimuth, F32 endAzimuth, F32 startElevation, F32 endElevation ))
 /// 
@@ -29768,12 +28669,6 @@ m_ts.fn_Sun_apply(sun);
         /// </summary>
  public class TCPObjectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public TCPObjectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Connect to the given address.
 /// 
@@ -29872,12 +28767,6 @@ m_ts.fnTCPObject_send(tcpobject, data);
         /// </summary>
  public class TerrainBlockObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public TerrainBlockObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// png), (string filename, [string format]) - export the terrain block's heightmap to a bitmap file (default: png) )
 /// 
@@ -29915,12 +28804,6 @@ return m_ts.fnTerrainBlock_save(terrainblock, fileName);
         /// </summary>
  public class TerrainEditorObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public TerrainEditorObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( string matName )
 ///    Adds a new material. )
@@ -30295,12 +29178,6 @@ return m_ts.fn_TerrainEditor_updateMaterial(terraineditor, index, matName);
         /// </summary>
  public class TerrainSmoothActionObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public TerrainSmoothActionObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( TerrainBlock obj, F32 factor, U32 steps ))
 /// 
@@ -30316,12 +29193,6 @@ m_ts.fn_TerrainSmoothAction_smooth(terrainsmoothaction, terrain, factor, steps);
         /// </summary>
  public class TerrainSolderEdgesActionObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public TerrainSolderEdgesActionObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// () )
 /// 
@@ -30337,12 +29208,6 @@ m_ts.fn_TerrainSolderEdgesAction_solder(terrainsolderedgesaction);
         /// </summary>
  public class TheoraTextureObjectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public TheoraTextureObjectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Pause playback of the video. )
 /// 
@@ -30376,12 +29241,6 @@ m_ts.fn_TheoraTextureObject_stop(theoratextureobject);
         /// </summary>
  public class TimeOfDayObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public TimeOfDayObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 ///  )
 /// 
@@ -30433,12 +29292,6 @@ m_ts.fnTimeOfDay_setTimeOfDay(timeofday, time);
         /// </summary>
  public class TriggerObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public TriggerObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Get the number of objects that are within the Trigger's bounds.
 ///    @see getObject())
@@ -30467,12 +29320,6 @@ return m_ts.fnTrigger_getObject(trigger, index);
         /// </summary>
  public class TSAttachableObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public TSAttachableObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Attaches an object to this one.
 ///       @param obj The scene object to attach to us
@@ -30536,12 +29383,6 @@ return m_ts.fnTSAttachable_getNumAttachments(tsattachable);
         /// </summary>
  public class TSDynamicObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public TSDynamicObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ,NULL,NULL),
 ///    @brief Change one of the materials on the shape.
@@ -30615,12 +29456,6 @@ return m_ts.fnTSDynamic_getTargetName(tsdynamic, index);
         /// </summary>
  public class TSPathShapeObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public TSPathShapeObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Returns the looping state for the shape.)
 /// 
@@ -30778,12 +29613,6 @@ m_ts.fnTSPathShape_setTarget(tspathshape, position);
         /// </summary>
  public class TSShapeConstructorObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public TSShapeConstructorObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Autofit a mesh primitive or set of convex hulls to the shape geometry. Hulls 
 ///    may optionally be converted to boxes, spheres and/or capsules based on their 
@@ -32024,12 +30853,6 @@ m_ts.fnTSShapeConstructor_writeChangeSet(tsshapeconstructor);
         /// </summary>
  public class TSStaticObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public TSStaticObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ,NULL,NULL),
 ///    @brief Change one of the materials on the shape.
@@ -32103,12 +30926,6 @@ return m_ts.fnTSStatic_getTargetName(tsstatic, index);
         /// </summary>
  public class TurretShapeObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public TurretShapeObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Does the turret respawn after it has been destroyed.
 ///    @returns True if the turret respawns.)
@@ -32203,12 +31020,6 @@ m_ts.fnTurretShape_setTurretEulerRotation(turretshape, rot.AsString());
         /// </summary>
  public class UndoActionObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public UndoActionObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ), action.addToManager([undoManager]))
 /// 
@@ -32242,12 +31053,6 @@ m_ts.fn_UndoAction_undo(undoaction);
         /// </summary>
  public class UndoManagerObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public UndoManagerObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Clears the undo manager.)
 /// 
@@ -32371,12 +31176,6 @@ m_ts.fn_UndoManager_undo(undomanager);
         /// </summary>
  public class VolumetricFogObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public VolumetricFogObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Changes the color of the fog.
 /// 	@params new_color the new fog color (rgb 0-255, a is ignored.)
@@ -32425,12 +31224,6 @@ m_ts.fnVolumetricFog_SetFogModulation(volumetricfog, new_strenght, new_speed1.As
         /// </summary>
  public class WalkableShapeObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public WalkableShapeObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Attaches an object to this one.
 ///       @param obj The scene object to attach to us
@@ -32494,12 +31287,6 @@ return m_ts.fnWalkableShape_getNumAttachments(walkableshape);
         /// </summary>
  public class WheeledVehicleObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public WheeledVehicleObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Get the number of wheels on this vehicle.
 ///    @return the number of wheels (equal to the number of hub nodes defined in the model) )
@@ -32577,12 +31364,6 @@ return m_ts.fnWheeledVehicle_setWheelTire(wheeledvehicle, wheel, tire);
         /// </summary>
  public class WorldEditorObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public WorldEditorObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// )
 /// 
@@ -33034,12 +31815,6 @@ m_ts.fnWorldEditor_setTerrainSnapAlignment(worldeditor, (int)alignment );
         /// </summary>
  public class WorldEditorSelectionObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public WorldEditorSelectionObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// ( WorldEditorSelection, containsGlobalBounds, bool, 2, 2, () - True if an object with global bounds is contained in the selection. )
 /// 
@@ -33100,12 +31875,6 @@ m_ts.fnWorldEditorSelection_union(worldeditorselection, a2);
         /// </summary>
  public class ZipObjectObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ZipObjectObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// @brief Add a file to the zip archive
 ///    
@@ -33287,12 +32056,6 @@ return m_ts.fnZipObject_openFileForWrite(zipobject, filename);
         /// </summary>
  public class ZoneObject
 {
-private Omni m_ts;
-     /// <summary>
-     /// 
-     /// </summary>
-     /// <param name="ts"></param> 
-public ZoneObject(ref Omni ts){m_ts = ts;}
 /// <summary>
 /// Dump a list of all objects assigned to the zone to the console as well as a list 
 ///    of all connected zone spaces.

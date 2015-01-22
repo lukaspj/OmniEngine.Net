@@ -199,10 +199,10 @@
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="ClassInheritanceLog012220150051.txt" />
-    <Content Include="ClassInheritanceLog012220154354.txt" />
-    <Content Include="StaticCodeAnalyserRunLog012220150302.txt" />
-    <Content Include="StaticCodeAnalyserRunLog012220154516.txt" />
+    <Content Include="ClassInheritanceLog012220152757.txt" />
+    <Content Include="ClassInheritanceLog012220154809.txt" />
+    <Content Include="StaticCodeAnalyserRunLog012220152826.txt" />
+    <Content Include="StaticCodeAnalyserRunLog012220155024.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>
